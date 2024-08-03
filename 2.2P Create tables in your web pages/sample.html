@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table Header</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        .main-header {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <!-- Spanning the first row across 3 columns -->
+                <th class="main-header" colspan="3">Airport Data</th>
+            </tr>
+            <tr>
+                <th>State</th>
+                <th>City</th>
+                <th>Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SA</td>
+                <td>Adelaide</td>
+                <td>ADL</td>
+            </tr>
+            <!-- Additional rows can be added here -->
+        </tbody>
+    </table>
+
+</body>
+</html>
