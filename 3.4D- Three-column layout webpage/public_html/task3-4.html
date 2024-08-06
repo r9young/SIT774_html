@@ -15,38 +15,48 @@
 
 </head>
 <body>
-    <head>
+    <header class="header">
         <h1>Welcome to 3-Col Demo Page</h1>
-    </head>
+    </header>
 
     <nav>
         <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Content</li>
+            <li><a>Home</a></li>
+            <li><a>About</a></li>
+            <li><a>Content</a></li>
         </ul>
     </nav>
 
 
     <main>
-        <div>
+        <div >
             <img src="../img/image.png" alt="Description of the image" width="900" height="450">
         </div>
         
-        <div>
-            <aside>
+        <div class="row">
+            <aside class="column">
                 <h2>Filter by category</h2>
-                <ul>
-                    <li>Filter 1</li>
-                    <li>Filter 2</li>
-                    <li>Filter 3</li>
+                <ul class="checkbox">
+                    <li>
+                        <input type="checkbox" id="item1">
+                        <label>Filter 1</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="item2">
+                        <label>Filter 2</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="item2">
+                        <label>Filter 3</label>
+                    </li>
                 </ul>
             </aside>
-            <section>
+            <section class="column">
                 <h2>The Main Content</h2>
                 <p>This section of the page will hold the primary information to be presented to the user.</p>
             </section>
-            <aside>
+
+            <aside class="column">
                 <h2>Featured Items</h2>
                 <p>Could put a list of items here.</p>
             </aside>
@@ -54,7 +64,7 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="footer">
         <p>The footer content goes here</p>
     </footer>
 </body>

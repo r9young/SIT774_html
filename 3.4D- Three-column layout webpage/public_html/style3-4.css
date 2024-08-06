@@ -1,3 +1,103 @@
 html {
     font-family: Nunito;
 }
+
+
+head h1 {
+    display: flex;
+}
+
+/* nav star */
+nav ul {
+    list-style-type: none; 
+    /* remove the bullet from the unordered list. */
+    display:table;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul li {
+    padding-left: 2rem;
+
+}
+
+nav ul li a {
+    color:gray;
+}
+
+/* structure */
+
+
+/* Style the header */
+.header {
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+    font-size: 15px;
+  }
+  
+  /* Container for flexboxes */
+  .row {
+    display: -webkit-flex;
+    display: flex;
+  }
+  
+  /* Create three unequal columns that sits next to each other */
+  .column {
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Left and right column */
+  .column.side {
+     -webkit-flex: 1;
+     -ms-flex: 1;
+     flex: 1;
+  }
+  
+  /* Middle column */
+  .column.middle {
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+  }
+  
+  /* Style the footer */
+  .footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+  }
+  
+
+  .checkbox {
+    list-style-type: none; 
+    
+
+  }
+
+aside.column {
+    background-color: rgb(192, 183, 171);
+}
+
+  
+.checkbox ul li{
+    display:flex;
+    align-items: left;
+}
+
+
+
+.row .column h2 {
+    color:peru;
+    font-weight: bold;
+    
+}
+
+main div  {
+    color:gray;
+}
