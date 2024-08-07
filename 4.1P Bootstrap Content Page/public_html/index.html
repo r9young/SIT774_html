@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1P: Bootstrap Content Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container-fluid bg-primary"> 
+        <!-- create a full-width container that spans the entire width of the viewport -->
+        <nav class="navbar navbar-expand-sm">
+            <!-- navbar-expand-sm == toggleable menu  -->
+            <a class="text-white ms-30">
+                <img>
+                dKin Caps
+            </a>
+            <div>
+                <ul class="navbar-nav text-white"> <!-- displayed in a horizontal row -->
+                    <li class="nav-item me-3"><a class="nav-link text-white" src="#">Introduction</a></li>
+                    <li class="nav-item me-3"><a class="nav-link text-white" src="#">Data</a></li>
+                    <li class="nav-item me-3"><a class="nav-link text-white" src="#">Picture</a></li>
+                    <li class="nav-item me-3"><a class="nav-link text-white" src="#">Stories</a></li>
+                    <li class="nav-item me-3"><a class="nav-link text-white" src="#">Summary</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid bg-custom-light-blue d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <h2 class="mb-4 fs-2 mt-5 fs-1">dKin Caps</h2>
+            <p class="mb-5 fs-5 text-secondary">A young and inspiring organisation whose primary purpose is to bring you the highest quality headwear available.</p>
+        </div>
+    </div>
+
+    <div class="mx-5 mt-3">
+        <h2>Introduction</h2>
+        <p>This is the simple page that shows a number of bootstrap components and the styles they provide to enhance plain HTML content - while also supporting a
+            responsive display (screen resizing).</p>
+        <p>Firstly, at the top of the page, within a ‹header>... ‹/header› section, it is common to have the navigation and some form of banner / heading content. Here we have a list using the Bootstrap ‹nav>... ‹/nav› component in a container with five links to different parts of the webpage, with a blue (bg-primary) background and white (text-white) text. While a second container-fluid with a light blue (bg-primary-subtle) holds the banner details in a centred column of width 8 (col-sm-8 mx-auto text-center py-5) and comprising a title of the page and leading sentence.</p>
+        <p>Next is the <body>...</body> section that holds the content of the page. The content includes the following sections: Introduction (this), Data, Pictures, Stories and a Summary. The table content is formatted, while the pictures and stories of ice creams applies differing responsive layouts.</p>
+        <p>The final section is a <footer>...‹/footer›.</p>
+        <p>Note that each section has a hyperlink to the Top of the document for navigation.</p>
+    </div>
+
+    <div class="container mx-5 mt-3">
+        <h2>Hat Usage Data</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr class="bg-custom-light-blue ">
+                    <th>Item</th>
+                    <th>Male</th>
+                    <th>Female</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td colspan="4">Do you usually wear a hat? (often wearing a hat)</td>
+                <tr>
+                    <td>Yes</td>
+                    <td>11</td>
+                    <td>10</td>
+                    <td>21</td>
+                </tr>
+                <td colspan="4">How often do you clean your hat?(frequency of hat washing)</td>
+                <tr>
+                    <td>Whenever it get dirty</td>
+                    <td>11</td>
+                    <td>10</td>
+                    <td>21</td>
+                </tr>
+                <tr>
+                    <td>Once a week</td>
+                    <td>21</td>
+                    <td>12</td>
+                    <td>33</td>
+                </tr>
+                <tr>
+                    <td>About once a month</td>
+                    <td>21</td>
+                    <td>12</td>
+                    <td>33</td>
+                </tr>
+                <tr>
+                    <td>Never</td>
+                    <td>21</td>
+                    <td>12</td>
+                    <td>33</td>
+                </tr>
+                <td colspan="4">Hat Usage Behavior Data (54 reponses, 2013)</td>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container mx-5 mt-3">
+        <h2>Pictures of Hats(Responsive Layout)</h2>
+        <p>Below are some nice pictures of hats and caps, license-free images downloaded from the website Unsplash. 
+        These images are placed in a single bootstrap row g-2 (where the g-2 adds a gutter size 2 between the images) composed of columns using a combined col-sm-4 col-12. 
+        The col-sm-4 forces 3 images to be in a row on all screens sizes except very small ones (576px) where the col-12 forces the images to use all 12 column grid units and stack each image on top of each other. 
+        Each image has the class img-fluid applied to it, allowing it resize to the size of the column.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <img src="img/image_1.png" alt="Image 1" class="img-fluid img-thumbnail">
+            Flex item 1
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <img src="img/image_2.png" alt="Image 2" class="img-fluid img-thumbnail">
+            Flex item 2
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <img src="img/image_3.png" alt="Image 3" class="img-fluid img-thumbnail">
+            Flex item 3
+        </div>
+    </div>
+</body>
+</html>
