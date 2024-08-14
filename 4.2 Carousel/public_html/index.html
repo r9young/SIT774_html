@@ -1,0 +1,306 @@
+<!-- Add a ‘Hero’ carousel component below the Navbar
+Make the carousel span the full width of the screen and have a maximum
+
+what is hero?
+The "Hero" part comes from web design terminology, 
+where a "hero" section is typically a large, prominent section at the top of a webpage.
+
+specific requirements:
+    - height of 300px
+    - should have controls 
+    - should cross fade
+    - should also have indicators visible/usable
+
+
+The Navbar should also be made sticky to the header section of the
+document. That is it remains visible while the window is scrolled down until
+the main section is entered. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS (including Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- heading -->
+    <section>
+        <header>
+            <nav class="d-flex flex-wrap bg-primary text-white ">
+                <div class="navbar-brand d-flex align-items-center fw-bold fs-5 p-4">
+                    <img src="../img/men-cap-icon.svg" alt="Logo" width="40" height="auto">
+                    <span class="ms-2 align-self-end fw-bold fs-4">dKin Caps</span>
+                    <!-- <h1 class="mb-0 ms-2">dKin Caps</h1> -->
+                    <!-- h1 has default margin -->
+                </div>
+                <div class="d-flex align-items-center">
+                    <ul class="navbar-nav d-flex flex-row align-items-end col-sm-8 mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link me-4 text-white fs-5" id="introduction">Introduction</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-4 text-white fs-5" id="data">Data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-4 text-white fs-5" id="pictures">Pictures</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-4 text-white fs-5" id="story">Stories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link me-4 text-white fs-5" id="summary">Summary</a>
+                        </li>
+                   </ul>    
+                </div>
+            </nav>
+        </header>
+    </section>
+
+
+    <!-- hero section - Carousel -->
+    <!-- Bootstrap JS (including Popper.js) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <section>
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="../img/image_1.jpg" class="d-block w-100" style="width: 100%; height: 300px; object-fit:cover" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../img/image_2.png" class="d-block w-100" style="width: 100%; height: 300px; object-fit:cover" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../img/image_3.jpg" class="d-block w-100" style="width: 100%; height: 300px; object-fit:cover" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </section>
+
+  
+
+    <section>
+        <div class="bg-primary-subtle ">
+            <div class="py-5 me-5 ms-5 d-flex flex-column align-items-center justify-content-center">
+                <!-- flex-column align-items-center justify-content-center -->
+                <h2>dKin Caps</h2>
+                <p class="text-secondary ms-5">
+                    A young and inspiring organisation whose primary purpose is to bring you the highest quality headwear avaiable.
+                </p>
+            </div>
+        </div>
+    </section>   
+    
+    <section class="py-5 me-5 ms-5">
+        <div>
+            <h2>Introduction</h2>
+            <p class="text-secondary ">
+                Our website is your go-to destination for everything related to hats. 
+                Whether you're a casual enthusiast or a passionate collector, 
+                we offer a comprehensive exploration into the world of hats through our carefully curated sections
+            </p>
+        </div>
+        
+        <div class="py-5 me-5 ms-5 d-flex justify-content-end">
+            <a href="#introduction">Top</a>
+        </div>
+    </section>
+    
+       
+
+        <div class="py-5 me-5 ms-5">
+            <h2>Hat Usage Data</h2>
+           
+            <table class="table col-md-10 col-12 mx-auto">
+                <thead>
+                    <tr>
+                        <td class="bg-primary bg-primary-subtle">Item</td>
+                        <td class="bg-primary bg-primary-subtle">Male</td>
+                        <td class="bg-primary bg-primary-subtle">Female</td>
+                        <td class="bg-primary bg-primary-subtle">Total</td>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <td colspan="4">Do you usually wear a hat? (often wearing a hat)</td>
+                    <tr>
+                       <td class="text-secondary">Yes</td>
+                       <td class="text-secondary bg-Light">11</td>
+                       <td class="text-secondary">10</td>
+                       <td class="text-secondary bg-Light">21</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary">No</td>
+                        <td class="text-secondary bg-light">21</td>
+                        <td class="text-secondary">12</td>
+                        <td class="text-secondary bg-light">33</td>
+                    </tr>
+                    <td colspan="4">How often do you clean your hat? (frequency of hat washing)</td>
+                    <tr>
+                        <td class="text-secondary">Whenever it gets dirty</td>
+                        <td class="text-secondary bg-light">17</td>
+                        <td class="text-secondary">17</td>
+                        <td class="text-secondary bg-light">34</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary ">Once a week</td>
+                        <td class="text-secondary bg-light">4</td>
+                        <td class="text-secondary">0</td>
+                        <td class="text-secondary bg-light">4</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary">About once a week</td>
+                        <td class="text-secondary bg-light">4</td>
+                        <td class="text-secondary">1</td>
+                        <td class="text-secondary bg-light">5</td>
+                    </tr>
+                    <tr>
+                        <td class="text-secondary">Never</td>
+                        <td class="text-secondary bg-light">7</td>
+                        <td class="text-secondary">4</td>
+                        <td class="text-secondary bg-light">11</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            <span colspan="4" class="text-secondary">Hat Usage Behavior Data (54 respondents, 2013)</span>
+
+            <div class="d-flex justify-content-end">
+                <a href="#data">Top</a>
+            </div>
+
+        </div>
+
+
+
+        <!-- picture of hats (Responsive Layout) -->
+
+
+        <div class="py-5 me-5 ms-5">
+            <div>
+                <h2>Pictures of Hats(Responsive Layout)</h2>
+            </div>
+        
+            <div>
+                <div class="row g-2">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="text-center">
+                                    <div>
+                                    <img src="../img_2/image_1.jpg" class="img-fluid " style="height: 500px; width: auto;" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="../img_2/image_2.jpg" class="img-fluid" style="height: 500px; width: auto;" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                    <img src="../img_2/image_3.jpg" class="img-fluid" style="height: 500px; width: auto;" alt="...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+            <div id="story" class="d-flex justify-content-end">
+                <a href="#pictures" >Top</a>
+            </div>
+        </div>
+
+
+
+        <div class="py-5 me-5 ms-5">
+            <h2>Hat Stories</h2>
+            <div> 
+                <div class="row">
+                    <div class="p-4 mb-4 bg-primary-subtle rounded border border-primary">
+
+                        <div class="row">
+                            <div class="col-sm-7 col-12">
+                                <h3 class="text-secondary lead">Sun Hats by <span class="fs-4 fw-normal">Adiran Siaril</span></h3>
+                                <p class="text-secondary small">
+                                    In a small, quiet town nestled between rolling hills and golden fields, 
+                                    there lived an old man named Henry. He was known for his gentle smile and the stories he told, 
+                                    stories that made the past come alive. But there was one story he never shared, 
+                                    a story held by a little hat that hung from the rearview mirror of his vintage car.
+                                </p>
+                                <br>
+                                <p class="text-secondary small">
+                                    This wasn't just any hat. It was a miniature replica of a sun hat, weathered and worn, yet still holding onto the essence of the adventures it had seen. 
+                                    The hat was a gift, given to Henry by his wife, Margaret, on their first road trip together. 
+                                    They had just gotten married and decided to explore the country, driving from town to town, with nothing but a map and a sense of wonder.
+                                </p>
+                            </div>
+
+                            <div class="col-sm-5 col-12 ">
+                                <img src="img/image_4.png" alt="Your Image"  class="rounded img-fluid">
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="p-4 mb-4 bg-primary-subtle rounded border border-primary">
+                        <div class="row">
+                            <div class="col-sm-7 col-12">
+                                <h3 class="text-secondary lead">Baseball Cpas by <span class="fs-4 fw-normal">Shlok Jethwa</span></h3>
+                                <p class="text-secondary small">In a quiet corner of the town's oldest hat shop, a dusty Fedora sat quietly on a worn-out wooden shelf. This was no ordinary hat—it had a history, a story intertwined with the vibrant culture and evolution of headwear.
+                                    <br> <br>Years ago, this Fedora belonged to a renowned musician, William "Billy" Grant, whose jazz tunes could light up any room. Billy was known not only for his soulful music but also for his impeccable style, and the Fedora became a symbol of his personality. It accompanied him on every stage, every tour, and every late-night jam session in the smoky clubs of New Orleans.
+                                </p>
+                            </div>
+                            <div class="col-sm-5 col-12">
+                                <img src="img/image_5.png" alt="Your Image"  class="img-fluid rounded-pill">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="#story" >Top</a>
+            </div>
+        </div>
+
+        <div class="py-5 me-5 ms-5 ">
+            <h2>Summary</h2>
+
+            <p class="container-fluid p-2 bg-dark text-white">
+                the ultimate destination for hat enthusiasts and fashion aficionados. 
+                Our curated collection features a wide range of stylish headwear, from timeless fedoras and chic berets to contemporary baseball caps and sun-protective hats. 
+                Each piece is carefully selected for its quality, design, and the unique story it carries. 
+                Whether you're looking to make a bold fashion statement or find the perfect accessory for any occasion, 
+                our selection caters to every taste and style. Explore our categories, discover the latest trends, 
+                and find your next favorite hat today!
+            </p>
+
+            <div class="d-flex justify-content-end">
+                <a href="#summary" >Top</a>
+            </div>
+
+        </div>
+        
+    </section>
+
+    
+</body>
+</html>
