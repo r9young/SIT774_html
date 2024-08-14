@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=2">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
@@ -13,7 +13,7 @@
     <head>
       
         <nav class="navbar navbar-expand-sm bg-primary align-items-end text-white">
-            <div class="container-fluid">
+            <div class="container-fluid col-12">
 
               <img src="../men-cap-icon.svg" class="img-thumbnail bg-primary border-primary" style="width: 60px; height: auto;" alt="">
               <a class="navbar-brand" href="#">Navbar</a>
@@ -39,11 +39,11 @@
      
         <!-- hero -->
         <section>
-            <div class="bg-primary-subtle ">
-                <div class="py-5 me-5 ms-5 d-flex flex-column align-items-center justify-content-center">
+            <div class="bg-primary-subtle col-12">
+                <div class="py-3 me-3 ms-3 d-flex flex-column align-items-center justify-content-center">
                     <!-- flex-column align-items-center justify-content-center -->
                     <h2>dKin Caps</h2>
-                    <p class="text-secondary ms-5">
+                    <p class="text-secondary ms-3">
                         A young and inspiring organisation whose primary purpose is to bring you the highest quality headwear avaiable.
                     </p>
                 </div>
@@ -54,8 +54,8 @@
     <!-- introduction -->
     
 
-    <section class="p-5 m-5">
-        <div>
+    <section class="p-3 m-3">
+        <div class="col-12">
             <h2>Introduction</h2>
             <p class="text-secondary">
                 Our website is your go-to destination for everything related to hats. 
@@ -70,37 +70,39 @@
 
 
     <!-- membership form -->
-    <section class="p-5 m-5 bg-light">
+    <section class="p-3 m-3 bg-light">
 
-        <div class="mb-5">
+        <div class="mb-3">
             <h2>Membership Form</h2>
             <span>Please complete the form below with your details and we will happily add you to our mailing list!</span>
         </div>
         
         
-        <form class="d-flex flex-column justify-content-center text-secondary">
+        <form class="d-flex flex-column justify-content-center text-secondary ">
             <div>
                 <div class="row mb-3">
-                    <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label fs-5">Firstname</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control form-control-lg col-12" placeholder="Firstname">
+                    <label for="colFormLabelSm" class="col-md-2 col-12 col-form-label f-2">Firstname</label>
+                    <div class="col-md-10 col-12">
+                        <input type="text" class="form-control form-control-lg" placeholder="Firstname">
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="colFormLabel" class="col-sm-2 col-form-label col-12 fs-5">Surename</label>
+                    <label for="colFormLabel" class="col-sm-2 col-form-label f-2">Surname</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control form-control-lg col-12" placeholder="Surename">
+                        <input type="text" class="form-control form-control-lg" placeholder="Surname">
                     </div>
                 </div>
+                
                 <div class="row mb-3">
-                    <label for="colFormLabelLg" class="col-sm-2 col-12 col-form-label fs-5 ">Email</label>
-                    <div class="col-sm-10">
+                    <label for="colFormLabelLg" class="col-sm-2 col-12 col-form-label f-2 ">Email</label>
+                    <div class="col-sm-10 col-12">
                         <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Email">
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="colFormLabelLg" class="col-sm-2 col-form-label fs-5">Mobile</label>
-                    <div class="col-sm-10">
+                    <label for="colFormLabelLg" class="col-sm-2 col-12 col-form-label f-2">Mobile</label>
+                    <div class="col-sm-10 col-12">
                         <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="04xxxxxx">
                     </div>
                 </div>
@@ -109,7 +111,7 @@
             <!-- checkout box 1-->
 
             <div class="d-flex flex-wrap mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label fs-5">Number of caps owned:</label>
+                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label f-2">Number of caps owned:</label>
                 
                 <div class="d-flex flex-column">
                     <div class="d-flex flex-wrap col-sm-12">
@@ -139,26 +141,26 @@
             </div>
 
             <div class="d-flex flex-row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label fs-5">Favourite Cap(s)</label>
+                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label f-2">Favourite Cap(s)</label>
                 <select class="form-select text-secondary" multiple aria-label="Multiple select example" size="6">
                     <option selected value="1">Snapback Cap</option>
                     <option value="2">Truck Cap</option>
                     <option value="3">Bucket Hat</option>
                     <option value="4">Beanie</option>
-                    <option value="5">Beret Cap</option>
+                    <option value="3">Beret Cap</option>
                     <option value="6">Runners Cap</option>
                 </select>
             </div>
 
             <div class="d-flex flex-row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label fs-5">Write a poem about your cap:</label>
+                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label f-2">Write a poem about your cap:</label>
                 <textarea name="comment" id="comment" cols="40" rows="4" class="col-sm-10"></textarea>
             </div>
 
             <!-- checkout box -->
 
             <div class="d-flex flex-row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label fs-5">Places your wear your cap:</label>
+                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label f-2">Places your wear your cap:</label>
                 
                 <div class="d-flex flex-column">
 
@@ -200,7 +202,7 @@
             </div>
 
             <div class="d-flex flex-row mb-3">
-                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label fs-5">Write a poem about your cap:</label>
+                <label for="colFormLabelSm" class="col-sm-2 col-12 col-form-label f-2">Write a poem about your cap:</label>
                 <textarea name="comment" id="comment" cols="40" rows="4" class="col-sm-10"></textarea>
             </div>
 
