@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+        <title>Bootstrap Example</title>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+
+        <nav class="navbar bg-primary">
+         
+            <!-- bg-body-tertiary : a background color  -->
+            <!-- navbar bg-body-tertiary : it styles the navbar with a background color --> 
+
+            <div class="container-fluid">
+            <!-- container-fluid - creates a full-width container that stretches across the entire width of the viewport -->
+                <div>
+                    <a class="navbar-brand" href="#">
+                        <img src="../men-cap-icon.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                        Bootstrap
+                    </a>
+                </div>
+                
+                <!-- <div class="navbar navbar-expand-lg bg-primary"> -->
+                    <!-- navbar - This class creates a responsive navigation bar component. -->
+                    <!-- navbar-expand-lg - Large screen expand, small screen collapse -->
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link active" aria-current="page" href="#">Introduction</a>
+                            <a class="nav-link active" aria-current="page" href="#">Members Form</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </nav>
+        
+        <nav class="navbar navbar-expand-lg bg-primary">
+            
+            <div class="container-fluid d-flex justify-content-start">
+
+                <!-- Logo and Brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="../men-cap-icon.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    Bootstrap
+                </a>
+                
+                <!-- Toggler Button for Mobile View -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <!-- Navigation Links -->
+                <div class="collapse navbar-collapse d-flex justify-content-start" id="navbarNav">
+                    <div class="navbar-nav">
+                        <a class="nav-link active text-white" aria-current="page" href="#">Introduction</a>
+                        <a class="nav-link active text-white" href="#">Members Forms</a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        
+       
+        
+    </body>
+</html>
