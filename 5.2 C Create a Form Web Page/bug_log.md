@@ -332,4 +332,60 @@ style="height:200px;object-fit: cover
 
 
 
+## input mobile
+
+
+**issue** 
+
+What value should I give in type?
+
+```html
+
+<div class="row position-relative m-2">
+  <label class="col-sm-2" for="validationTooltip03" >Mobile:</label>
+  <div class="col-sm-10 ">
+    <input type="tel" class="form-control" id="validationTooltip03" placeholder="04xxxxxxxx" required>
+  </div>
+  <div class="invalid-tooltip">
+    Please provide a valid mobile number.
+  </div>
+</div>
+
+```
+
+**Answer**
+
+tel 
+
+type="tel"
+
+and add a patter - pattern="04\d{8}"
+
+```html
+
+         <input type="tel" class="form-control" id="validationTooltip03" placeholder="04xxxxxxxx" pattern="04\d{8}" required>
+```
+
+
+
+
+## radio
+
+**issue**
+I have two radio box, but I only can choose either of them.
+
+**solution**
+
+Explanation:
+  Radio buttons: Use type="radio" when you want the user to select only one option from a group.
+  Checkboxes: Use type="checkbox" when you want to allow the user to select multiple options from a group.
+  By making these changes, you'll ensure that users can only select one option from the first group (radio buttons) and can select multiple options from the second group (checkboxes).
+
+
+Key Changes:
+  Unique name attributes: Each group of radio buttons (capsOwned and capWearingPlace) now has a unique name attribute. This allows independent selection within each group.
+  Unique id attributes: Each id is unique to avoid conflicts and ensure proper labeling.
+  With these changes, you should be able to select one option from each group without issues.
+
+
 

@@ -68,7 +68,6 @@
               <label class="col-sm-2" for="validationTooltip03" >Email:</label>
               <div class="col-sm-10">
                 <div class="input-group">
-                  <!-- <span class="input-group-text" id="inputGroupPrepend2">@</span> -->
                   <input type="email" class="form-control" id="validationTooltip03" placeholder="name@example.com" required>
                 </div>
                
@@ -81,7 +80,7 @@
             <div class="row position-relative m-2">
               <label class="col-sm-2" for="validationTooltip03" >Mobile:</label>
               <div class="col-sm-10 ">
-                <input type="text" class="form-control" id="validationTooltip03" placeholder="04xxxxxxxx" required>
+                <input type="tel" class="form-control" id="validationTooltip03" placeholder="04xxxxxxxx" pattern="04\d{8}" required>
               </div>
               <div class="invalid-tooltip">
                 Please provide a valid mobile number.
@@ -89,40 +88,33 @@
             </div>
 
             <!-- checkbox_1 -->
-            <div class="row position-relative m-2">
+            <div class="row position-relative m-2 needs-validation" novalidate>
               <label class="col-sm-2" for="validationTooltip03">Number of caps owned:</label>
               <div class="container col-sm-10">
-                  <div class="row">
+                <div class="row">
 
-                    <div class="col-6 col-sm-2 form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                      <label class="form-check-label" for="flexRadioDefault1">
-                        No caps yet
-                      </label>
-                    </div>
-
-                    <div class="col-6 col-sm-2 form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                      <label class="form-check-label" for="flexRadioDefault2">
-                        Between 1 and 10 caps
-                      </label>
-                    </div>
-
-                    <div class="col-6 col-sm-2 form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                      <label class="form-check-label" for="flexRadioDefault2">
-                        Between 11 and 29 caps
-                      </label>
-                    </div>
-
-                    <div class="col-6 col-sm-2 form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                      <label class="form-check-label" for="flexRadioDefault1">
-                        No caps yet
-                      </label>
-                  
-                    </div>
+                  <div class="col-6 col-sm-2 form-check">
+                    <input class="form-check-input" type="radio" name="aflexRadioDefault" id="aflexRadioDefault1" required>
+                    <label class="form-check-label" for="aflexRadioDefault1">
+                      No caps yet
+                    </label>
                   </div>
+
+                  <div class="col-6 col-sm-2 form-check">
+                    <input class="form-check-input" type="radio" name="aflexRadioDefault" id="aflexRadioDefault2" required>
+                    <label class="form-check-label" for="aflexRadioDefault2">
+                      Between 1 and 10 caps
+                    </label>
+                  </div>
+
+                  <div class="col-6 col-sm-2 form-check">
+                    <input class="form-check-input" type="radio" name="aflexRadioDefault" id="aflexRadioDefault3" required>
+                    <label class="form-check-label" for="aflexRadioDefault3">
+                      Between 11 and 29 caps
+                    </label>
+                  </div> 
+                  <div class="invalid-feedback">More more example invalid feedback text</div>
+                </div>
               </div>
             </div>
 
@@ -153,38 +145,38 @@
 
                 <div class="row">
                   <div class="col-6 col-sm-2 form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="bflexRadioDefault" id="bflexRadioDefault1" required>
+                    <label class="form-check-label" for="bflexRadioDefault1">
                       In the park
                     </label>
                   </div>
                   <div class="col-6 col-sm-2 form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="bflexRadioDefault" id="bflexRadioDefault1" required>
+                    <label class="form-check-label" for="bflexRadioDefault1">
                       At the circus
                     </label>
                   </div>
                   <div class="col-6 col-sm-2 form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="bflexRadioDefault" id="bflexRadioDefault1" required>
+                    <label class="form-check-label" for="bflexRadioDefault1">
                     In the supermarket
                     </label>
                   </div>
                   <div class="col-6 col-sm-2 form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="bflexRadioDefault" id="bflexRadioDefault1" required>
+                    <label class="form-check-label" for="bflexRadioDefault1">
                     At the opera
                     </label>
                   </div>
                   <div class="col-6 col-sm-2 form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="bflexRadioDefault" id="bflexRadioDefault1" required>
+                    <label class="form-check-label" for="bflexRadioDefault1">
                     In the shower
                     </label>
                   </div>
                   <div class="col-6 col-sm-2 form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="bflexRadioDefault" id="bflexRadioDefault1" required>
+                    <label class="form-check-label" for="bflexRadioDefault1">
                     At the dentists
                     </label>
                   </div>
@@ -193,22 +185,27 @@
                   <div class="w-100 d-none d-md-block"></div>
               
                   <div class="col-6 col-sm-2 form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
                     <label class="form-check-label" for="flexRadioDefault1">
                     Other...
                     </label>
+                    <div class="invalid-feedback">More example invalid feedback text</div>
                   </div>
                 </div>
               </div>
             </div>
 
-
-            <div class="row position-relative m-2 fs-10">
-              <label class="col-sm-2" for="validationTooltip03">Place your wear your cap:</label>
-              <div class="container col-sm-10">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3 m-2"></textarea>
-              </div>
+            <form class="needs-validation" novalidate>
+              <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
+              <label class="form-check-label" for="validationFormCheck2">Toggle this radio</label>
             </div>
+
+            <div class="form-check mb-3">
+              <input type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked" required>
+              <label class="form-check-label" for="validationFormCheck3">Or toggle this other radio</label>
+              <div class="invalid-feedback">More example invalid feedback text</div>
+            </div>
+
 
 
             <!-- cards -->
@@ -286,7 +283,7 @@
                     <label class="form-check-label" for="flexSwitchCheckChecked">Yes, Please also send me discount!</label>
                   </div>
                   <div>
-                    <button type="button" class="btn btn-primary">Sign Up</button>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
                     <button type="button" class="btn btn-secondary">Reset</button>
                   </div>
                 </div>  
@@ -300,28 +297,30 @@
             2024 A webpage footer with important info
           </div>
         </footer>
+
+        <script>
+          // Example starter JavaScript for disabling form submissions if there are invalid fields
+          (function () {
+            'use strict'
+    
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+    
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+              .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                  if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                  }
+    
+                  form.classList.add('was-validated')
+                }, false)
+              })
+          })()
+        </script>
     </body>
 
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function () {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-          .forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-              if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-              }
-
-              form.classList.add('was-validated')
-            }, false)
-          })
-      })()
-    </script>
+   
 </html>
