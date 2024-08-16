@@ -306,3 +306,30 @@ The issue is the folllwing code does not resize the photo and put it in a object
     </div>
 </div>
 ```
+
+
+**fix**
+
+```html
+
+ <div class="card col-sm-3 m-2 p-0 h-100" style="width: 18rem;">
+    <img src="../img/image_1.png" class="card-img-top img-fluid" alt="..." style="height:200px;object-fit: cover;"> 
+    <div class="card-body">
+        <h5 class="card-title">Card title test</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+
+```
+
+we add:
+
+p-0
+h-100
+image-fluid
+style="height:200px;object-fit: cover
+
+
+
+
