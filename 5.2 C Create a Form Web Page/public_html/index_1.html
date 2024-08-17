@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bootstrap Example</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../scss/styles.css"> 
+      </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid d-flex justify-content-start d-inline-block align-text-top">
+
+                <!-- Logo and Brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="../men-cap-icon.svg" alt="Logo size="width:200px height:200px object-fit:cover;"" width="30" height="24"  object-fit:cover;class="d-inline-block align-text-top">
+                    Bootstrap
+                </a>
+                
+                <!-- Toggler Button for Mobile View -->
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <!-- Navigation Links -->
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                      <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+                      <a class="nav-link" href="#">Introduction</a>
+                      <a class="nav-link" href="#">Member Form</a>
+                      <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
+                    </div>
+                  </div>
+            </div>
+        </nav>
+
+        <main class="container bg-gray p-5 m-5">
+            <form class="row g-2 needs-validation" novalidate>
+
+                <div class="row mb-3"> 
+                    <label for="validationFirstName" class="col-sm-2 col-form-label">Firstname*</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="validationFirstName" required>
+                      <div class="invalid-feedback">
+                        Please provide a valid First Name.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <button type="button" class="btn btn-secondary">Reset</button>
+                  </div>
+            </form>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            (() => {
+              'use strict'
+        
+              const forms = document.querySelectorAll('.needs-validation')
+        
+              Array.from(forms).forEach(form => {
+                form.addEventListener('submit',   
+         event => {
+                  if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                  }
+        
+                  form.classList.add('was-validated')
+                }, false)
+              })
+            })()
+          </script>   
+
+    </body>
+</html>

@@ -389,3 +389,45 @@ Key Changes:
 
 
 
+
+## Invalid message
+
+
+**issue**
+
+the issue is the invalid warning message appear on the bottom of last radio. 
+It needs to apper on the buttom of the choice. 
+
+```html
+
+ <!-- checkbox_1 -->
+<div class="row position-relative m-2 needs-validation" novalidate>
+  <label class="col-sm-2" for="validationTooltip03">Number of caps owned:</label>
+
+  <div class="container col-sm-10">
+    <div class="row">
+      <div class="col-6 col-sm-2 form-check">
+        <input class="form-check-input" type="radio" name="aflexRadioDefault" id="aflexRadioDefault1" required>
+        <label class="form-check-label" for="aflexRadioDefault1">
+          No caps yet
+        </label>
+      </div>
+
+      <div class="col-6 col-sm-2 form-check">
+        <input class="form-check-input" type="radio" name="aflexRadioDefault" id="aflexRadioDefault2" required>
+        <label class="form-check-label" for="aflexRadioDefault2">
+          Between 1 and 10 caps
+        </label>
+      </div>
+      <div class="col-6 col-sm-2 form-check">
+        <input class="form-check-input" type="radio" name="aflexRadioDefault" id="aflexRadioDefault3" required>
+        <label class="form-check-label" for="aflexRadioDefault3">
+          Between 11 and 29 caps
+        </label>
+        <div class="invalid-feedback">More more example invalid feedback text</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+```
