@@ -431,3 +431,39 @@ It needs to apper on the buttom of the choice.
 </div>
 
 ```
+
+
+**correct code**
+
+<div class="row position-relative m-2">
+    <label class="col-sm-2" for="validationFN">Firstname*:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="validationFN" required>
+      <div class="invalid-feedback">
+        Please provide a valid First Name.
+      </div>
+    </div>
+</div>
+
+
+## why the invalid message does not appear?
+
+**issue**
+
+why the following message does not appear?
+
+
+```html
+
+  <div class="row position-relative m-2">
+    <div class="row">
+      <label class="col-sm-2" for="validationTextarea1" class="form-label">Write a poem about your cap:</label>
+      <textarea class="col-sm-10 form-control is-invalid" id="validationTextarea1" placeholder="Write a poem about your cap:" required></textarea>
+    </div>
+    <div class="invalid-feedback">Please enter a message in the textarea.</div>
+</div>
+
+
+```
+
+

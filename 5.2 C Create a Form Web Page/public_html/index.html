@@ -2,7 +2,7 @@
 <html lang="en">
       <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0 h-100">
+        <meta name="viewport" content="width=device-width, initial-sc.0 h-100">
         <title>Bootstrap Example</title>
         
         <!-- Bootstrap CSS -->
@@ -36,7 +36,7 @@
                       <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
                       <a class="nav-link" href="#">Introduction</a>
                       <a class="nav-link" href="#">Member Form</a>
-                      <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
+                      <!-- <a class="nav-link disabled" href="#" tabinde" aria-disabled="true">Disabled</a> -->
                     </div>
                   </div>
             </div>
@@ -46,8 +46,8 @@
           <form class="row g-2 needs-validation" novalidate>
 
             <div class="row position-relative m-2">
-              <label class="col-sm-2" for="validationFN" >Firstname*:</label>
-              <div class="col-sm-10 ">
+              <label class="col-sm-2" for="validationFN">Firstname*:</label>
+              <div class="col-sm-10">
                 <input type="text" class="form-control" id="validationFN" required>
                 <div class="invalid-feedback">
                   Please provide a valid First Name.
@@ -56,37 +56,37 @@
             </div>
 
             <div class="row position-relative m-2">
-              <label class="col-sm-2" for="validationTooltip03" >Last Name:</label>
-              <div class="col-sm-10 ">
-                <input type="text" class="form-control" id="validationTooltip03" required>
-              </div>
-              <div class="invalid-feedback">
-                Please provide a valid Last Name.
+              <label class="col-sm-2" for="validationFN">Surename:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="validationFN" required>
+                <div class="invalid-feedback">
+                  Please provide a valid Surename.
+                </div>
               </div>
             </div>
 
+
             <div class="row position-relative m-2">
-              <label class="col-sm-2" for="validationTooltip03" >Email:</label>
+              <label class="col-sm-2" for="validationFN">Email:</label>
               <div class="col-sm-10">
-                <div class="input-group">
-                  <input type="email" class="form-control" id="validationTooltip03" placeholder="name@example.com" required>
+                <input type="email" class="form-control" id="validationFN" required>
+                <div class="invalid-feedback">
+                  Please provide a valid Email Address
                 </div>
-               
-              </div>
-              <div class="invalid-feedback">
-                Please provide a valid Email Address.
               </div>
             </div>
+
            
             <div class="row position-relative m-2">
-              <label class="col-sm-2" for="validationTooltip03" >Mobile:</label>
-              <div class="col-sm-10 ">
-                <input type="tel" class="form-control" id="validationTooltip03" placeholder="04xxxxxxxx" pattern="04\d{8}" required>
-              </div>
-              <div class="invalid-feedback">
-                Please provide a valid mobile number.
+              <label class="col-sm-2" for="validationFN">Mobile:</label>
+              <div class="col-sm-10">
+                <input type="tel" pattern="04\d{8}" class="form-control" id="validationFN" required>
+                <div class="invalid-feedback">
+                  Please provide a mobile number.
+                </div>
               </div>
             </div>
+
 
         
 
@@ -97,22 +97,22 @@
               <label class="col-sm-2" for="validationTooltip03">Number of caps owned:</label>
               
 
-              <div class="container col-sm-10">
-                <div class="row">
+              <div class="container col-sm-10 ">
+                <div class="row ms-2">
                   <div class="col-6 col-sm-2 form-check">
                     <input class="form-check-input" type="radio" name="aflexRadioDefault" id="aflexRadioDefault1" required>
                     <label class="form-check-label" for="aflexRadioDefault1">
                       No caps yet
                     </label>
                     <div class="invalid-feedback">
-                      More example invalid feedback text
+                      Please select one or more options.
                     </div>
                   </div>
 
                   <div class="col-6 col-sm-2 form-check">
                     <input class="form-check-input" type="radio" name="aflexRadioDefault" id="aflexRadioDefault2" required>
                     <label class="form-check-label" for="aflexRadioDefault2">
-                      Between 1 and 10 caps
+                      Betw and 10 caps
                     </label>
                   </div>
 
@@ -134,15 +134,18 @@
             <div class="row position-relative m-2 fs-10">
               <label class="col-sm-2" for="validationTooltip03">Place your wear your cap:</label>
               <div class="container col-sm-10">
-                <select class="form-select" multiple aria-label="Multiple select example" size="7">
-                  <option selected>Open this select menu</option>
+                <select class="form-select" multiple required aria-label="Multiple select example" size="7">
+                  <!-- <option value="0">Open this select menu</option> -->
                   <option value="1">Snapback Cap</option>
                   <option value="2">Trucker Cap</option>
-                  <option value="4">Bucket Hat</option>
-                  <option value="5">Beanie</option>
-                  <option value="6">Beret Cap</option>
-                  <option value="7">Runners Cap</option>
+                  <option value="3">Bucket Hat</option>
+                  <option value="4">Beanie</option>
+                  <option value="5">Beret Cap</option>
+                  <option value="6">Runners Cap</option>
                 </select>
+                <div class="invalid-feedback">
+                  Please select one or more options.
+                </div>
               </div>
             </div>
 
@@ -152,7 +155,7 @@
               <label class="col-sm-2" for="validationTooltip03">Place your wear your cap:</label>
               <div class="container col-sm-10">
 
-                <div class="row">
+                <div class="row ms-2">
                   <div class="col-6 col-sm-2 form-check">
                     <input class="form-check-input" type="radio" name="bflexRadioDefault" id="bflexRadioDefault1" required>
                     <label class="form-check-label" for="bflexRadioDefault1">
@@ -191,24 +194,39 @@
                   </div>
               
                   <!-- Force next columns to break to new line at md breakpoint and up -->
-                  <div class="w-100 d-none d-md-block"></div>
+                  <div class="w-100 d-md-block"></div>
               
                   <div class="col-6 col-sm-2 form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
                     <label class="form-check-label" for="flexRadioDefault1">
                     Other...
                     </label>
-                    <div class="invalid-feedback">More example invalid feedback text</div>
+                    <div class="invalid-feedback">Please select one or more options.</div>
                   </div>
                 </div>
               </div>
             </div>
 
 
+            <!-- text box -->
+
+            <div class="row position-relative m-2 ">
+              <div class="row mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label col-sm-2">Example textarea</label>
+                <div class="col-sm-10">
+                  <textarea class="form-control " id="exampleFormControlTextarea1" rows="3" required></textarea>
+                  <div class="invalid-feedback">
+                    Please enter a message in the textarea.
+                  </div>
+                </div>
+                
+                
+              </div>
+            </div>
 
             <!-- cards -->
             <div class="row position-relative m-2 fs-10">
-              <label class="col-sm-2" for="validationTooltip03">Place your wear your cap:</label>
+              <label class="col-sm-2" for="validationTooltip03">Select the cap designs you like: </label>
               <div class="container col-sm-10">
                 <div class="row d-flex justify-content-between">
 
@@ -216,7 +234,7 @@
                   <div class="card col-sm-3 m-2 p-0 h-100" style="width: 18rem;">
                     <img src="../img/image_1.png" class="card-img-top img-fluid" alt="..." style="height:200px;object-fit: cover;"> 
                     <div class="card-body">
-                      <h5 class="card-title">Design 1</h5>
+                      <h5 class="card-title">Des</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                       <a href="#" class="btn btn-light">Select this design</a>
                     </div>
