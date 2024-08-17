@@ -467,3 +467,33 @@ why the following message does not appear?
 ```
 
 
+## What if I want to move the picture a little bit lower?
+
+```html
+
+
+ <img src="../img/image_2.png" class="card-img-top img-fluid" alt="..." style="height:200px;object-fit: cover; object-position: 0 60px;"> 
+
+
+```
+
+**solution**
+
+To adjust the content of the image so that the visible portion is positioned lower (rather than moving the entire image element), you can manipulate the `object-position` property. This property allows you to control which part of the image is displayed when the image is resized or cropped.
+
+Here's how you can do it:
+
+```html
+<img src="../img/image_2.png" class="card-img-top img-fluid" alt="..." style="height:200px; object-fit: cover; object-position: 0 20px;">
+```
+
+In this example:
+
+- `object-fit: cover;` ensures that the image covers the entire height and width of the container while maintaining its aspect ratio.
+- `object-position: 0 20px;` shifts the image content down by 20 pixels within its container. The first value (`0`) represents the horizontal position, and the second value (`20px`) represents the vertical position.
+
+You can adjust the `20px` value to move the image content lower or higher within the container, depending on how much of the lower part of the image you want to show.
+
+
+
+## main nav and footer are not aligned
