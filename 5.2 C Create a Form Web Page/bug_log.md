@@ -82,14 +82,17 @@ fixed bug
 </script>
 
 ```
+----
+
+## Form Layout Issue (Finalized)
 
 
-## Form Layout
+**issue**
 
-my code
+the problem of the following code is that even I have set the col-sm-2 and col-sm-10 in label and input respectively.
+Both of item are still in a separeate row. 
 
-firstname
-|        input        |
+
 
 ```html
   <div class="row position-relative">
@@ -102,61 +105,45 @@ firstname
 
 ```
 
-correction:
+**Solution**
 
-
-    The issue you're facing is due to the way Bootstrap's grid system works. Specifically, you are trying to use the Bootstrap grid classes (`col-sm-2`, `col-sm-10`) on an `input` element directly, which isn't recommended. The grid classes should be applied to `div` elements that wrap your `label` and `input` elements. This ensures proper alignment.
-
-    Here's the corrected code:
-
-    ```html
-    <div class="row position-relative">
-        <div class="col-sm-2">
-            <label for="validationTooltip03">Firstname*:</label>
-        </div>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="validationTooltip03" required>
-            <div class="invalid-tooltip">
-                Please provide a valid city.
-            </div>
-        </div>
-    </div>
-    ```
-
-    ### Explanation:
-    - **Grid Classes on Wrappers**: The grid classes (`col-sm-2`, `col-sm-10`) are applied to `div` elements that contain the `label` and `input` respectively. This ensures that the `label` and `input` are correctly aligned in a row.
-    - **Correct Alignment**: By wrapping the `label` and `input` inside `div` elements with the appropriate grid classes, they will align correctly on larger screens.
-
-    ### Additional Notes:
-    - **`position-relative` on `row`**: This class is correct if you're planning to use `position` utilities within the row or if the tooltip requires relative positioning.
-    - **Invalid Tooltip Positioning**: Ensure that the `invalid-tooltip` is positioned appropriately relative to the input field. If you face any issues with the tooltip placement, additional CSS might be needed to adjust its position.
-
-    This adjustment should solve the alignment issue on larger screens.
+Short summary:  (`col-sm-2`, `col-sm-10`) should be applied to 'div' rather than `label` and `input` elements.
 
 
 
+The issue you're facing is due to the way Bootstrap's grid system works. Specifically, you are trying to use the Bootstrap grid classes (`col-sm-2`, `col-sm-10`) on an `input` element directly, which isn't recommended. The grid classes should be applied to `div` elements that wrap your `label` and `input` elements. This ensures proper alignment.
 
-## Email-validation
-
+Here's the corrected code:
 
 ```html
-
-
-            <div class="row position-relative m-3">
-              <label class="col-sm-2" for="validationTooltip03" >Email:</label>
-              <div class="col-sm-10">
-                <div class="input-group">
-                  <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                  <input type="text" class="form-control" id="validationTooltip03" placeholder="name@example.com" required>
-                </div>
-               
-              </div>
-              <div class="invalid-tooltip">
-                Please provide a valid Email Address.
-              </div>
-            </div>
-
+<div class="row position-relative">
+    <div class="col-sm-2">
+        <label for="validationTooltip03">Firstname*:</label>
+    </div>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" id="validationTooltip03" required>
+        <div class="invalid-tooltip">
+            Please provide a valid city.
+        </div>
+    </div>
+</div>
 ```
+
+#### Explanation:
+- **Grid Classes on Wrappers**: The grid classes (`col-sm-2`, `col-sm-10`) are applied to `div` elements that contain the `label` and `input` respectively. This ensures that the `label` and `input` are correctly aligned in a row.
+- **Correct Alignment**: By wrapping the `label` and `input` inside `div` elements with the appropriate grid classes, they will align correctly on larger screens.
+
+#### Additional Notes:
+- **`position-relative` on `row`**: This class is correct if you're planning to use `position` utilities within the row or if the tooltip requires relative positioning.
+- **Invalid Tooltip Positioning**: Ensure that the `invalid-tooltip` is positioned appropriately relative to the input field. If you face any issues with the tooltip placement, additional CSS might be needed to adjust its position.
+
+This adjustment should solve the alignment issue on larger screens.
+
+
+-----
+
+## Email-validation (Finalized)
+
 
 ### how to make sure that we input a valid email address
 
@@ -164,31 +151,28 @@ correction:
 ```html
 
 
-            <div class="row position-relative m-3">
-              <label class="col-sm-2" for="validationTooltip03" >Email:</label>
-              <div class="col-sm-10">
-                <div class="input-group">
-                  <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                  <input type="email" class="form-control" id="validationTooltip03" placeholder="name@example.com" required>
-                </div>
-               
-              </div>
-              <div class="invalid-tooltip">
-                Please provide a valid Email Address.
-              </div>
-            </div>
-
+<div class="row position-relative m-3">
+  <label class="col-sm-2" for="validationTooltip03" >Email:</label>
+  <div class="col-sm-10">
+    <div class="input-group">
+      <span class="input-group-text" id="inputGroupPrepend2">@</span>
+      <input type="email" class="form-control" id="validationTooltip03" placeholder="name@example.com" required>
+    </div>
+  </div>
+</div>
 ```
 
-Explanation:
+### Explanation:
 type="email": This ensures the input is checked against a valid email format.
 
+-------
+
+## Layout issue: the checkboxes are displayed in a row on larger screens, but hould be arranged in a vertical list in a small screen.
 
 
-## flex
+**Issue**
 
-
-Bug: Problem: The issue I need to address is ensuring that the checkboxes are displayed in a row on larger screens, but on smaller screens, they should be arranged in a vertical list.
+The issue I need to address is ensuring that the checkboxes are displayed in a row on larger screens, but on smaller screens, they should be arranged in a vertical list.
 
 ```html
 
@@ -220,7 +204,7 @@ Bug: Problem: The issue I need to address is ensuring that the checkboxes are di
 ```
 
 
-fix:
+**Solution**
 
 
 ```html
@@ -236,13 +220,9 @@ fix:
 
 ```
 
+----------
 
-
-##
-
-
-
-**Question:** Why does the toggle switch occupy the entire row in the following code, while the two buttons are displayed on the same row?
+## Why does the toggle switch occupy the entire row in the following code, while the two buttons are displayed on the same row? (Finalized)
 
 
 ```html
@@ -277,18 +257,16 @@ The reason the toggle switch occupies the whole line while the two buttons are o
 
 
 
+-----
 
+## Pagination (Finalized)
 
-## Pagination
+**What is Pagination?**
 
-Pagination include: sizing, alignment, css
-
-
+Pagination include: sizing, alignment, css ...
 
 
 ### size of a picture in a card
-
-
 
 **issue**
 
@@ -308,7 +286,7 @@ The issue is the folllwing code does not resize the photo and put it in a object
 ```
 
 
-**fix**
+**Solution**
 
 ```html
 
@@ -331,12 +309,15 @@ image-fluid
 style="height:200px;object-fit: cover
 
 
+----
 
-## input mobile
 
 
-**issue** 
+## Mobile Number (Finalized)
 
+
+**Issue** 
+ 
 What value should I give in type?
 
 ```html
@@ -367,14 +348,14 @@ and add a patter - pattern="04\d{8}"
 ```
 
 
-
+-----
 
 ## radio
 
-**issue**
+**Issue**
 I have two radio box, but I only can choose either of them.
 
-**solution**
+**Solution**
 
 Explanation:
   Radio buttons: Use type="radio" when you want the user to select only one option from a group.
@@ -383,17 +364,18 @@ Explanation:
 
 
 Key Changes:
-  Unique name attributes: Each group of radio buttons (capsOwned and capWearingPlace) now has a unique name attribute. This allows independent selection within each group.
+  **Unique name attributes**: Each group of radio buttons (capsOwned and capWearingPlace) now has a unique name attribute. This allows independent selection within each group.
   Unique id attributes: Each id is unique to avoid conflicts and ensure proper labeling.
   With these changes, you should be able to select one option from each group without issues.
 
 
+-----
 
 
 ## Invalid message
 
 
-**issue**
+**Issue**
 
 the issue is the invalid warning message appear on the bottom of last radio. 
 It needs to apper on the buttom of the choice. 
@@ -445,12 +427,13 @@ It needs to apper on the buttom of the choice.
     </div>
 </div>
 
+----
 
-## why the invalid message does not appear?
+## Why the invalid message does not appear? (Not Finalized)
 
 **issue**
 
-why the following message does not appear?
+Why the following message does not appear?
 
 
 ```html
@@ -467,7 +450,9 @@ why the following message does not appear?
 ```
 
 
-## What if I want to move the picture a little bit lower?
+-----
+
+## Move the picture a little bit lower?
 
 ```html
 
@@ -478,6 +463,8 @@ why the following message does not appear?
 ```
 
 **solution**
+
+**Summary** object-position: 0 20px;
 
 To adjust the content of the image so that the visible portion is positioned lower (rather than moving the entire image element), you can manipulate the `object-position` property. This property allows you to control which part of the image is displayed when the image is resized or cropped.
 
@@ -495,5 +482,5 @@ In this example:
 You can adjust the `20px` value to move the image content lower or higher within the container, depending on how much of the lower part of the image you want to show.
 
 
+---
 
-## main nav and footer are not aligned

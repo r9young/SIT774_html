@@ -14,35 +14,31 @@ function addListItem() {
     ];
 
     const list = document.getElementById("capList");
-    const emptyMessage = document.getElementById("emptyMessage");
+    const emptymessage = document.getElementById("emptyMessage");
 
-    // Hide the "List is empty" message
-    emptyMessage.style.display = 'none';
-
-    // Clear any existing list items to avoid duplication
-    list.innerHTML = '';
+    emptymessage.style.display = 'none';
+    list.innerHTML = "";
 
     capTypes.forEach(function(capType) {
-        const listItem = document.createElement("li");
-        listItem.textContent = capType;
-        list.appendChild(listItem);
-    });
 
-    // Disable the button after adding the list
-    document.querySelector("button.btn-primary").disabled = true;
+        const listItem = document.createElement("li") // create A new <li> element (the function will ilterate the rest)
+        listItem.textContent=capType;
+        list.appendChild(listItem)
+    })
+
+    // the parent list (<ul>) now contains a single list item <li> with the content "Baseball Cap".
+
 }
 
-// Function to remove all list items and show the "List is empty" message
 function removeListItem() {
     const list = document.getElementById("capList");
     const emptyMessage = document.getElementById("emptyMessage");
 
-    // Clear all items from the list
     list.innerHTML = '';
 
-    // Show the "List is empty" message
     emptyMessage.style.display = 'block';
 
-    // Re-enable the "Create and Display Top 10 Cap List" button
-    document.querySelector("button.btn-primary").disabled = false;
+     // Re-enable the "Create and Display Top 10 Cap List" button
+     document.querySelector("button.btn-primary").disabled = false;
+    
 }
