@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap Wearing Schedule</title>
+</head>
+<body>
+
+    <h1>Cap Wearing Schedule</h1>
+    <input class="btn btn-primary" type="button" onclick="buildCapPlan()" value="Create Cap Schedule">
+    <input class="btn btn-secondary" type="button" onclick="resetCapPlan()" value="Reset Cap Schedule">
+
+    <table class="table table-bordered my-4">
+        <thead>
+            <tr>
+                <th>Week #</th>
+                <th>Day #1</th>
+                <th>Day #2</th>
+                <th>Day #3</th>
+                <th>Day #4</th>
+                <th>Day #5</th>
+                <th>Day #6</th>
+                <th>Day #7</th>
+            </tr>
+        </thead>
+        <tbody id="cap-planner-table-body">
+            <tr>
+                <td colspan="8"><em>The plan is currently empty!</em></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function buildCapPlan() {
+            const caps = ['Cap1', 'Cap2', 'Cap3', 'Cap4', 'Cap5', 'Cap6', 'Cap7'];
+            const numWeeks = 3;
+            const daysPerWeek = 7;
+            
+            let tbody = document.getElementById("cap-planner-table-body");
+
+            // Clear the previous content
+            tbody.innerHTML = '';
+
+            // Create rows for each week
+            for (let week = 0; week < numWeeks; week++) {
+                const tr = document.createElement('tr');
+                const weekCell = document.createElement('td');
+                weekCell.textContent = `Week ${week + 1}`;
+                tr.appendChild(weekCell);
+
+                // Fill days with caps
+                for (let day = 0; day < daysPerWeek; day++) {
+                    const td = document.createElement('td');
+                    
+                    // Distribute caps for the first two weeks normally
+                    if (week < 2) {
+                        td.textContent = caps[day % caps.length];
+                    } else {
+                        // Handle the remainder in the third week
+                        const remainder = daysPerWeek % caps.length;
+                        if (day < remainder) {
+                            td.textContent = caps[day];
+                        } else {
+                            td.textContent = caps[day % caps.length];
+                        }
+                    }
+                    
+                    tr.appendChild(td);
+                }
+
+                tbody.appendChild(tr);
+            }
+        }
+
+        function resetCapPlan() {
+            const tbody = document.getElementById("cap-planner-table-body");
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="8"><em>The plan is currently empty!</em></td>
+                </tr>
+            `;
+        }
+    </script>
+
+</body>
+</html>

@@ -27,8 +27,10 @@ function addListItem() {
     })
 
     // the parent list (<ul>) now contains a single list item <li> with the content "Baseball Cap".
-
 }
+
+
+
 
 function removeListItem() {
     const list = document.getElementById("capList");
