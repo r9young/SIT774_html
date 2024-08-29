@@ -52,3 +52,46 @@ Yes, that's correct. If you use an **absolute path** (like `/data/data.xlsx`), y
   - This path is relative to the directory from which you run the script. If you move the script to a different location, the relative path may no longer correctly reference the file unless the relative structure remains the same.
   - **Example**: If you move your script to `/Users/r9young/new_location/` and run it from there, it will look for `data/data.xlsx` inside `/Users/r9young/new_location/`. If the `data` directory does not exist there, it won't find the file.
 
+## Resulting JSON Structure
+
+name of row must be exactly same on json datase
+
+
+```javascript
+
+function transformToCapRatingJSON(data) {
+  const capRatingListJSON = {
+      capratings: data.map(row => ({
+          cap: row['Cap'],  // Replace with your actual column header
+          stars: [
+              row['1-star'],  // Replace with your actual column headers
+              row['2-star'], 
+              row['3-star'], 
+              row['4-star'], 
+              row['5-star'],
+              row['__EMPTY'],
+              row['__EMPTY_1'],
+          ]
+      }))
+  };
+  return capRatingListJSON;
+}
+
+```
+
+ {
+      "cap": "FLC",
+      "stars": [
+        37,
+        201,
+        358,
+        332,
+        123,
+        3.2882968601332063,
+        1051
+      ]
+    },
+``
+
+
+## Populating the table

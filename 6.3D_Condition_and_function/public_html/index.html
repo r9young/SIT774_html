@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cap Ratings</title>
+</head>
+<body>
+
+    <button id="showDataBtn">Show Data</button>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Cap</th>
+                <th>1-star</th>
+                <th>2-star</th>
+                <th>3-star</th>
+                <th>4-star</th>
+                <th>5-star</th>
+                <th>Average</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="capTableBody">
+            <!-- Rows will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        function populateTable(data) {
+            const tbody = document.getElementById('capTableBody');
+            tbody.innerHTML = '';  // Clear any existing rows
+
+            data.capratings.forEach(row => {
+                const tr = document.createElement('tr');
+
+                const capCell = document.createElement('td');
+                capCell.textContent = row.cap;
+                tr.appendChild(capCell);
+
+                row.stars.forEach(star => {
+                    const starCell = document.createElement('td');
+                    starCell.textContent = star;
+                    tr.appendChild(starCell);
+                });
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.getElementById('showDataBtn').addEventListener('click', function() {
+            setTimeout(function() {
+                // Fetch the JSON data after waiting for the file to be created
+                fetch('data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        populateTable(data);
+                    })
+                    .catch(error => {
+                        console.error('Error loading JSON:', error);
+                    });
+            }, 5000);  // Wait 5 seconds to allow time for the file to be created
+        });
+    </script>
+
+</body>
+</html>
