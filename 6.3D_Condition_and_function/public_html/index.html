@@ -52,7 +52,7 @@
         document.getElementById('showDataBtn').addEventListener('click', function() {
             setTimeout(function() {
                 // Fetch the JSON data after waiting for the file to be created
-                fetch('data.json')
+                fetch('../data.json')
                     .then(response => response.json())
                     .then(data => {
                         populateTable(data);
@@ -60,7 +60,7 @@
                     .catch(error => {
                         console.error('Error loading JSON:', error);
                     });
-            }, 5000);  // Wait 5 seconds to allow time for the file to be created
+            });  // Wait 5 seconds to allow time for the file to be created
         });
     </script>
 
