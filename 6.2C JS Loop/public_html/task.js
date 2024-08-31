@@ -1,32 +1,73 @@
 function buildCapPlan() {
-    let tbody = document.getElementById("cap-planner-table-body");
-    
-    // If tbody does not exist, create it and append it to the table
-    // it create the <tbody> element only if it doesn't already exist
-    if (!tbody) {
-        tbody = document.createElement('tbody');
-        tbody.id = "cap-planner-table-body";
-        document.querySelector('table').appendChild(tbody);
+    const numWeeks = parseInt(document.getElementById('weekCountInput').value);
+    const numCaps = parseInt(document.getElementById('capCountInput').value);
+
+    if (numWeeks < 1 || numWeeks > 52) {
+        alert(`Number of WEEKS must be between 1 and 52 (value ${numWeeks}).`);
+        return;
     }
 
-    // If tbody is empty, add the "The plan is currently empty!" row
+    if (numCaps < 1 || numCaps > 10) {
+        alert(`Number of CAPS must be between 1 and 9 (value ${numCaps}).`);
+        return;
+    }
 
-    // If the <tbody> is empty, 
-    // the code inserts a single row with one cell that spans all 8 columns (colspan="8"). 
-    // This cell contains the message "The plan is currently empty!" in italicized text (<em>).
-    
-    if (tbody.innerHTML.trim() === '') {
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="8"><em>The plan is currently empty!</em></td>
-            </tr>
-        `;
+    const hatList = ["Baseball Cap", "Fedora", "Sun Hat", "Cowboy Hat", "Beret", "Trilby", "Top Hat", "Panama Hat", "Bowler Hat"];
+    const selectedHatList = hatList.slice(0, numCaps);
+ 
+    const capTable = [];
+
+    for (let week = 0; week < numWeeks; week++) {
+        const weekRow = [];
+        for (let day = 0; day < 7; day++) {
+            const hatIndex = (week * 7 + day) % selectedHatList.length;
+            weekRow.push(selectedHatList[hatIndex]);
+        }
+        capTable.push(weekRow);
+    }
+
+    console.log(capTable);
+    generateTable(capTable, numCaps); 
+    // function composition or simply function calling another function.
+}
+
+function generateTable(tableData, numCaps) {
+    const tableBody = document.getElementById('cap-planner-table-body');
+    tableBody.innerHTML = "";  // Clear previous content
+    let capCounter = 0;  // This will track the total caps to determine when to switch colors
+
+    for (let week = 0; week < tableData.length; week++) {
+        const row = document.createElement('tr');
+
+        const weekCell = document.createElement('td');
+        weekCell.textContent = `Week ${week + 1}`;
+        row.appendChild(weekCell);
+
+        for (let day = 0; day < tableData[week].length; day++) {
+            const cell = document.createElement('td');
+
+            // Apply background color based on the capCounter divided by numCaps
+            if (Math.floor(capCounter / numCaps) % 2 === 0) {
+                cell.style.backgroundColor = '#F8F5F5';  // Light gray color
+            } else {
+                cell.style.backgroundColor = '#ffffff';  // White color
+            }
+
+
+            // Add data into table
+            cell.textContent = tableData[week][day];
+            row.appendChild(cell);
+            capCounter++;  // Increment the capCounter after each cap is added
+        }
+
+        tableBody.appendChild(row);
     }
 }
 
 function resetCapPlan() {
-    const list = document.getElementById("cap-planner-table-body");
-    list.innerHTML = '';
+    document.getElementById('weekCountInput').value = '';
+    document.getElementById('capCountInput').value = '';
+
+    const tableBody = document.getElementById('cap-planner-table-body');
+    tableBody.innerHTML = '<tr><td colspan="8"><em>The plan is currently empty!</em></td></tr>';
 }
-
-
