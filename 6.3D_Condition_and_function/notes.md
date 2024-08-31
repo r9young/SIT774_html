@@ -95,3 +95,99 @@ function transformToCapRatingJSON(data) {
 
 
 ## Populating the table
+
+
+## Create data
+
+
+```javascript
+
+let btn = document.querySelector('#loadExcel');
+btn.addEventListener('click', () => {
+    // FETCH EXCEL FILE FROM A URL OR LOCAL URL
+    // fetch('./employees_data.xlsx')
+    fetch('./data.xlsx')
+        .then(response => response.blob())
+        .then(blob => readXlsxFile(blob))
+        .then((rows) => {
+            console.log(rows);
+            // LOOP THROUGH ROWS
+            rows.map((row, index) => {
+                let table = document.getElementById('tableData');
+                (index == 0)
+                ? generateTableHead(table, row)
+                : generateTableRows(table, row);
+
+                index++;
+            });
+        });
+}
+
+```
+
+
+Let's break down and learn the provided code step by step:
+
+### Code Explanation:
+
+1. **Query Selector**:
+   ```javascript
+   let btn = document.querySelector('#loadExcel');
+   ```
+   - This line selects the HTML element with the ID `loadExcel` and assigns it to the variable `btn`.
+
+2. **Event Listener**:
+   ```javascript
+   btn.addEventListener('click', () => {
+   ```
+   - This line adds a `click` event listener to the `btn` element. When the button is clicked, the anonymous arrow function following it will execute.
+
+3. **Fetch the Excel File**:
+   ```javascript
+   fetch('./data.xlsx')
+       .then(response => response.blob())
+   ```
+   - `fetch('./data.xlsx')`: This line initiates a fetch request to retrieve an Excel file (`data.xlsx`) from the specified URL (in this case, the local file path `./data.xlsx`).
+   - `.then(response => response.blob())`: Once the file is fetched, the response is converted to a `blob` (Binary Large Object), which is a type of file-like object of raw data.
+
+4. **Read the Excel File**:
+   ```javascript
+   .then(blob => readXlsxFile(blob))
+   ```
+   - This line takes the `blob` and passes it to the `readXlsxFile` function, which presumably parses the Excel file and returns its contents as an array of rows.
+
+5. **Process the Rows**:
+   ```javascript
+   .then((rows) => {
+       console.log(rows);
+   ```
+   - The rows returned from the previous step are logged to the console for inspection. These rows are likely an array of arrays, where each inner array represents a row from the Excel sheet.
+
+6. **Loop Through Rows**:
+   ```javascript
+   rows.map((row, index) => {
+       let table = document.getElementById('tableData');
+       (index == 0)
+           ? generateTableHead(table, row)
+           : generateTableRows(table, row);
+
+       index++;
+   });
+   ```
+   - `.map((row, index) => { ... })`: This line loops through each `row` in the `rows` array. The `index` parameter represents the current row's index.
+   - `let table = document.getElementById('tableData');`: This line selects the HTML table element with the ID `tableData`.
+   - `(index == 0) ? generateTableHead(table, row) : generateTableRows(table, row);`: This conditional expression checks if the `index` is `0` (meaning it's the first row, often used as a header row). If true, it calls `generateTableHead` to create the table's header. Otherwise, it calls `generateTableRows` to add rows to the table.
+   - `index++;`: This increments the `index` after processing each row (though it's unnecessary since `map` automatically provides the index).
+
+### Additional Considerations:
+
+- **`fetch`**: The `fetch` API is used to make network requests and handle responses asynchronously. Here, it's used to load an Excel file from the server or local path.
+  
+- **`readXlsxFile`**: This function is likely a third-party library or custom function to parse Excel files into JavaScript-readable formats. It's essential for transforming binary Excel data into a usable array format.
+
+- **Generating Table**:
+  - `generateTableHead(table, row)`: This function (not provided in the snippet) would be responsible for creating table headers (`<th>`) from the first row of the Excel file.
+  - `generateTableRows(table, row)`: This function (also not provided) would populate the table with data from subsequent rows.
+
+### Summary:
+This code snippet allows a user to load data from an Excel file into an HTML table by clicking a button. The Excel file is fetched, parsed, and then the data is dynamically inserted into an existing HTML table element. The first row of the Excel sheet is used to generate the table headers, and the subsequent rows fill the table with data.
