@@ -1,0 +1,31 @@
+body{
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 50px 300px;
+}
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+tr:nth-child(even){
+    background-color: #dddddd;
+}
+th{
+    background-color: #5a5a5a;
+    color: white;
+}
+button{
+    width: 300px;
+    margin: auto;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}

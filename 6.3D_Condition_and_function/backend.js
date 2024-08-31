@@ -22,13 +22,15 @@ function transformToCapRatingJSON(data) {
                 row['3-star'], 
                 row['4-star'], 
                 row['5-star'],
-                row['__EMPTY'],
-                row['__EMPTY_1'],
+                // row['__EMPTY'],
+                // row['__EMPTY_1'],
             ]
         }))
     };
     return capRatingListJSON;
 }
+
+
 
 const transformedData = transformToCapRatingJSON(jsonData);
 fs.writeFileSync('data.json', JSON.stringify(transformedData, null, 2), 'utf-8');
