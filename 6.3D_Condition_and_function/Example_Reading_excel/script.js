@@ -127,12 +127,18 @@ btn.addEventListener('click', () => {
         }
     }
 
+
+    // the problem of the following function is that it is not read the average column. it read the raw json data. 
+
     function highest_average() {
        let highestAvg = 0;
        let capWithHighestAvg = '';
 
        capRatingListJSON.capratings.forEach(capData => {
-        // Operations on capData here
+        // accesses the capratings array from your capRatingListJSON object.
+        // capRatingListJSON: This is your overall object, containing the key capratings.
+        // capratings: This is an array of objects
+        
         });
 
        console.log(`The highest average rating is ${}.`)
