@@ -16,8 +16,11 @@ btn.addEventListener('click', () => {
         ]
     };
 
+    let newDataArray = [];
+
     // Use the capRatingListJSON object to generate the table
     capRatingListJSON.capratings.map((capData, index) => {
+
         let table = document.getElementById('tableData');
         
         if (index == 0) {
@@ -45,7 +48,12 @@ btn.addEventListener('click', () => {
         setColor(newRow, '4 Star');
         setColor(newRow, '5 Star');
 
+        newDataArray.push(rowData);
+        
+
     });
+
+    console.log(newDataArray);
 
     //add a table header function
     function generateTableHead(table, headers) {
@@ -138,6 +146,7 @@ btn.addEventListener('click', () => {
        let highestAvg = 0;
        let capWithHighestAvg = '';
 
+        //so the arrary should extract from newRow
 
         // console.log(newRow)
         // script.js:36 (10) ['FDC', 'Fedora Cap', 55, 23, 123, 59, 24, 284, '2.91', 'Good']
@@ -150,7 +159,7 @@ btn.addEventListener('click', () => {
         // script.js:36 (10) ['FLC', 'Flat Cap', 37, 201, 358, 332, 123, 1051, '3.29', 'Good']
         // script.js:36 (10) ['CBC', 'Cowboy Cap', 19, 42, 112, 215, 99, 487, '3.68', 'Good']
 
-        if (averageRating >highestAvg) {
+        if (averageRating > highestAvg) {
             highestAvg = averageRating;
             capWithHighestAvg = capData.cap; 
         }
