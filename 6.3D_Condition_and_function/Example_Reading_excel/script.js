@@ -105,20 +105,27 @@ btn.addEventListener('click', () => {
     }
 
     function setColor(row, columnName) {
-        // Get the headers to find the index of the column by name
-        let table = row.closest('table'); // Find the table
-        let headers = table.querySelectorAll('th'); // Get all table headers
+        // Get the table that contains the row
+        let table = row.closest('table');
+        
+        // Get all table headers
+        let headers = table.querySelectorAll('th');
         
         // Find the index of the column with the specified name
         let columnIndex = Array.from(headers).findIndex(header => header.textContent === columnName);
         
         if (columnIndex !== -1) {
-            // Get the cell for the found column index
+            // Set the background color of the header (th)
+            let headerCell = headers[columnIndex];
+            headerCell.style.backgroundColor = "#d3d3d3"; // Set the background color for the header
+
+            // Set the background color of the corresponding row cell
             let ratingCategoryCell = row.cells[columnIndex]; 
-            ratingCategoryCell.style.backgroundColor = "#d3d3d3"; // Set the background color to white
+            ratingCategoryCell.style.backgroundColor = "#d3d3d3"; // Set the background color for the cell in the row
         } else {
             console.error(`Column "${columnName}" not found.`);
         }
     }
+
     
 });
