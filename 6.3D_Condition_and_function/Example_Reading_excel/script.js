@@ -120,12 +120,23 @@ btn.addEventListener('click', () => {
             headerCell.style.backgroundColor = "#d3d3d3"; // Set the background color for the header
 
             // Set the background color of the corresponding row cell
-            let ratingCategoryCell = row.cells[columnIndex]; 
-            ratingCategoryCell.style.backgroundColor = "#d3d3d3"; // Set the background color for the cell in the row
+            let columnName = row.cells[columnIndex]; 
+            columnName.style.backgroundColor = "#d3d3d3"; // Set the background color for the cell in the row
         } else {
             console.error(`Column "${columnName}" not found.`);
         }
     }
 
-    
+    function highest_average() {
+       let highestAvg = 0;
+       let capWithHighestAvg = '';
+
+       capRatingListJSON.capratings.forEach(capData => {
+        // Operations on capData here
+        });
+
+       console.log(`The highest average rating is ${}.`)
+    }
+
+
 });
