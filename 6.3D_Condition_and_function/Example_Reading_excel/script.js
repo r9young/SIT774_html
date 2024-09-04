@@ -143,27 +143,25 @@ btn.addEventListener('click', () => {
     // we need the abstract the array
 
     function highest_average() {
-       let highestAvg = 0;
-       let capWithHighestAvg = '';
+        let highestAvg = 0;
+        let capWithHighestAvg = '';
+     
+        // Loop through the newDataArray to find the highest average rating
+        newDataArray.forEach(rowData => {
+            // Extract the average rating (9th element, index 8)
+            let averageRating = parseFloat(rowData[8]); // Convert to number
+     
+            // Check if the current average rating is the highest
+            if (averageRating > highestAvg) {
+                highestAvg = averageRating;
+                capWithHighestAvg = rowData[0]; // Cap Name (1st element, index 0)
+            }
+        });
+     
+        console.log(`The cap with the highest average rating is ${capWithHighestAvg} with an average rating of ${highestAvg.toFixed(2)}.`);
+     }
 
-        //so the arrary should extract from newRow
-
-        // console.log(newRow)
-        // script.js:36 (10) ['FDC', 'Fedora Cap', 55, 23, 123, 59, 24, 284, '2.91', 'Good']
-        // script.js:36 (10) ['SNC', 'Sun Cap', 33, 124, 288, 983, 672, 2100, '4.02', 'Great']
-        // script.js:36 (10) ['PPC', 'Porkpie Cap', 61, 234, 341, 633, 43, 1312, '3.28', 'Good']
-        // script.js:36 (10) ['BRC', 'Beret Cap', 88, 341, 343, 456, 234, 1462, '3.28', 'Good']
-        // script.js:36 (10) ['SNV', 'Sun Visor', 12, 44, 123, 233, 88, 500, '3.68', 'Good']
-        // script.js:36 (10) ['BKC', 'Bucket Cap', 56, 77, 44, 23, 17, 217, '2.39', 'Poor']
-        // script.js:36 (10) ['PNC', 'Panama Cap', 78, 389, 545, 241, 112, 1365, '2.94', 'Good']
-        // script.js:36 (10) ['FLC', 'Flat Cap', 37, 201, 358, 332, 123, 1051, '3.29', 'Good']
-        // script.js:36 (10) ['CBC', 'Cowboy Cap', 19, 42, 112, 215, 99, 487, '3.68', 'Good']
-
-        if (averageRating > highestAvg) {
-            highestAvg = averageRating;
-            capWithHighestAvg = capData.cap; 
-        }
-
-    }
+     highest_average()
+     
             
 });
