@@ -33,7 +33,7 @@ btn.addEventListener('click', () => {
 
         // Create the row with all required information
         let rowData = [capData.cap, fullName, ...capData.stars, totalRatings, averageRating.toFixed(2), ratingCategory];
-
+        // console.log(rowData);
         // Add the row and get the newly created row
         let newRow = generateTableRows(table, rowData);
 
@@ -130,19 +130,31 @@ btn.addEventListener('click', () => {
 
     // the problem of the following function is that it is not read the average column. it read the raw json data. 
 
+    // highest average built
+
+    // we need the abstract the array
+
     function highest_average() {
        let highestAvg = 0;
        let capWithHighestAvg = '';
 
-       capRatingListJSON.capratings.forEach(capData => {
-        // accesses the capratings array from your capRatingListJSON object.
-        // capRatingListJSON: This is your overall object, containing the key capratings.
-        // capratings: This is an array of objects
-        
-        });
 
-       console.log(`The highest average rating is ${}.`)
+        // console.log(newRow)
+        // script.js:36 (10) ['FDC', 'Fedora Cap', 55, 23, 123, 59, 24, 284, '2.91', 'Good']
+        // script.js:36 (10) ['SNC', 'Sun Cap', 33, 124, 288, 983, 672, 2100, '4.02', 'Great']
+        // script.js:36 (10) ['PPC', 'Porkpie Cap', 61, 234, 341, 633, 43, 1312, '3.28', 'Good']
+        // script.js:36 (10) ['BRC', 'Beret Cap', 88, 341, 343, 456, 234, 1462, '3.28', 'Good']
+        // script.js:36 (10) ['SNV', 'Sun Visor', 12, 44, 123, 233, 88, 500, '3.68', 'Good']
+        // script.js:36 (10) ['BKC', 'Bucket Cap', 56, 77, 44, 23, 17, 217, '2.39', 'Poor']
+        // script.js:36 (10) ['PNC', 'Panama Cap', 78, 389, 545, 241, 112, 1365, '2.94', 'Good']
+        // script.js:36 (10) ['FLC', 'Flat Cap', 37, 201, 358, 332, 123, 1051, '3.29', 'Good']
+        // script.js:36 (10) ['CBC', 'Cowboy Cap', 19, 42, 112, 215, 99, 487, '3.68', 'Good']
+
+        if (averageRating >highestAvg) {
+            highestAvg = averageRating;
+            capWithHighestAvg = capData.cap; 
+        }
+
     }
-
-
+            
 });
