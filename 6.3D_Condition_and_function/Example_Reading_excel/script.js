@@ -20,7 +20,7 @@ btn.addEventListener('click', () => {
     capRatingListJSON.capratings.map((capData, index) => {
         // capratings?? capratings is a property of json object (capRatingListJSON)
         let table = document.getElementById('tableData');
-
+        
         if (index == 0) {
             // Add the table headers
             generateTableHead(table, ['Cap Name', 'Full Name', '1 Star', '2 Star', '3 Star', '4 Star', '5 Star', 'Total Ratings', 'Average Rating', 'Rating Category']);
@@ -34,10 +34,18 @@ btn.addEventListener('click', () => {
 
         // Create the row with all required information
         let rowData = [capData.cap, fullName, ...capData.stars, totalRatings, averageRating.toFixed(2), ratingCategory];
+        
         // ...capData??
         // capData.stars --> Refers to the array of numbers [12, 34, 532, 321, 77].
         // ...capData --> The spread operator (...) takes each element of the array [12, 34, 532, 321, 77] and spreads them out as individual elements.
-        generateTableRows(table, rowData);
+        // generateTableRows(table, rowData);
+        
+        // Add the row and get the newly created row
+        let newRow = generateTableRows(table, rowData);
+
+        // Change the color of the "Rating Category" cell only
+        setColor(newRow, ratingCategory);
+        
     });
 
 
@@ -62,6 +70,8 @@ btn.addEventListener('click', () => {
             newCell.appendChild(newText);
         });
     }
+
+  
 
     function fullCapName(abbreviatedCapName) {
         switch (abbreviatedCapName) {
@@ -98,4 +108,10 @@ btn.addEventListener('click', () => {
             return 'Great';
         }
     }
+
+    function setColor(column) {
+        let ratingCategoryCell = row.cells[col.cells.length - 1]; // Get the last cell in the row (rating category)
+        ratingCategoryCell.color = "gray"; // Apply color to the cell
+    }
+    
 });
