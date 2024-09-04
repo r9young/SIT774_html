@@ -1,8 +1,8 @@
 let btn = document.querySelector('#loadExcel');
 btn.addEventListener('click', () => {
     // Directly use the JSON data defined in the script
-    const capRatingListJSON = { //javascript Object
-        capratings: [ // property name --> arrary
+    const capRatingListJSON = {
+        capratings: [
             { cap:"BBC", stars: [12,34,532,321,77] },
             { cap:"FDC", stars: [55,23,123,59,24] },
             { cap:"SNC", stars: [33,124,288,983,672] },
@@ -18,7 +18,6 @@ btn.addEventListener('click', () => {
 
     // Use the capRatingListJSON object to generate the table
     capRatingListJSON.capratings.map((capData, index) => {
-        // capratings?? capratings is a property of json object (capRatingListJSON)
         let table = document.getElementById('tableData');
         
         if (index == 0) {
@@ -34,20 +33,19 @@ btn.addEventListener('click', () => {
 
         // Create the row with all required information
         let rowData = [capData.cap, fullName, ...capData.stars, totalRatings, averageRating.toFixed(2), ratingCategory];
-        
-        // ...capData??
-        // capData.stars --> Refers to the array of numbers [12, 34, 532, 321, 77].
-        // ...capData --> The spread operator (...) takes each element of the array [12, 34, 532, 321, 77] and spreads them out as individual elements.
-        // generateTableRows(table, rowData);
-        
+
         // Add the row and get the newly created row
         let newRow = generateTableRows(table, rowData);
 
         // Change the color of the "Rating Category" cell only
-        setColor(newRow, ratingCategory);
-        
-    });
+        setColor(newRow, 'Rating Category');
+        setColor(newRow, '1 Star');
+        setColor(newRow, '2 Star');
+        setColor(newRow, '3 Star');
+        setColor(newRow, '4 Star');
+        setColor(newRow, '5 Star');
 
+    });
 
     //add a table header function
     function generateTableHead(table, headers) {
@@ -62,16 +60,14 @@ btn.addEventListener('click', () => {
     }
 
     function generateTableRows(table, data) {
-        let newRow = table.insertRow(-1);
-        // ensure each new row is added as the last row of the table
+        let newRow = table.insertRow(-1); // Insert the new row at the end of the table
         data.forEach(cellData => {
             let newCell = newRow.insertCell();
             let newText = document.createTextNode(cellData);
             newCell.appendChild(newText);
         });
+        return newRow; // Return the newly created row
     }
-
-  
 
     function fullCapName(abbreviatedCapName) {
         switch (abbreviatedCapName) {
@@ -85,7 +81,6 @@ btn.addEventListener('click', () => {
             case "PNC": return "Panama Cap";
             case "FLC": return "Flat Cap";
             case "CBC": return "Cowboy Cap";
-            
         }
     }
 
@@ -109,9 +104,21 @@ btn.addEventListener('click', () => {
         }
     }
 
-    function setColor(column) {
-        let ratingCategoryCell = row.cells[col.cells.length - 1]; // Get the last cell in the row (rating category)
-        ratingCategoryCell.color = "gray"; // Apply color to the cell
+    function setColor(row, columnName) {
+        // Get the headers to find the index of the column by name
+        let table = row.closest('table'); // Find the table
+        let headers = table.querySelectorAll('th'); // Get all table headers
+        
+        // Find the index of the column with the specified name
+        let columnIndex = Array.from(headers).findIndex(header => header.textContent === columnName);
+        
+        if (columnIndex !== -1) {
+            // Get the cell for the found column index
+            let ratingCategoryCell = row.cells[columnIndex]; 
+            ratingCategoryCell.style.backgroundColor = "#d3d3d3"; // Set the background color to white
+        } else {
+            console.error(`Column "${columnName}" not found.`);
+        }
     }
     
 });

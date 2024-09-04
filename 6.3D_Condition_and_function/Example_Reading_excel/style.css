@@ -11,13 +11,15 @@ table, th, td{
     border-collapse: collapse;
     padding: 10px;
 }
-tr:nth-child(even){
+/* tr:nth-child(even){
     background-color: #dddddd;
-}
-th{
+} */
+
+/* th{
     background-color: #5a5a5a;
     color: white;
-}
+} */
+ 
 button{
     width: 300px;
     margin: auto;
