@@ -137,39 +137,38 @@ btn.addEventListener('click', () => {
 
 
    // we have got the highest average rating 
-   // next question is how could we add the data in html. 
-
-
- 
-
-    function highest_average() {
+   // next question is how could we add the data in html.
+   
+   function highest_average() {
         let highestAvg = 0;
         let capWithHighestAvg = '';
-     
+    
         // Loop through the newDataArray to find the highest average rating
         newDataArray.forEach(rowData => {
             // Extract the average rating (9th element, index 8)
             let averageRating = parseFloat(rowData[8]); // Convert to number
-     
+    
             // Check if the current average rating is the highest
             if (averageRating > highestAvg) {
                 highestAvg = averageRating;
                 capWithHighestAvg = rowData[0]; // Cap Name (1st element, index 0)
-
             }
         });
 
+        console.log(`The cap with the highest average rating is ${capWithHighestAvg} with an average rating of ${highestAvg.toFixed(2)}.`);
         
-     
-        result = console.log(`The cap with the highest average rating is ${capWithHighestAvg} with an average rating of ${highestAvg.toFixed(2)}.`);
-        // The issue in your current implementation is that you're trying to assign the result of console.log() to capWithHighestAvg and return it, 
-        // which will not work as expected because console.log() returns undefined. As a result, when you try to assign capWithHighestAvg to innerHTML, it will be undefined.
-        return result;
-     }
+        // Return both cap name and highest average rating as an object
+        return {
+            capName: capWithHighestAvg,
+            average: highestAvg.toFixed(2) // Return the average as a formatted string
+        };
+    }
+
 
     // After calling highest_average, set the innerHTML
     const bestrating = document.querySelector(".bestrating");
-    let capWithHighestAvg = highest_average();
-    bestrating.innerHTML = capWithHighestAvg;
-        
+    let { capName, average } = highest_average(); // Destructure the object
+    bestrating.innerHTML = `The cap with the highest average rating is: ${capName} with an average of ${average}`;
+
+            
 });
