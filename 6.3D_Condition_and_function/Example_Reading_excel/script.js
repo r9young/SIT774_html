@@ -189,6 +189,18 @@ btn.addEventListener('click', () => {
         };
     }
 
+    function total_rating () {
+        let total_rate = 0;
+        newDataArray.forEach(rowData => {
+            // Extract the average rating (9th element, index 8)
+            let rating = parseFloat(rowData[7]); // Convert to number
+            total_rate += rating;
+        });
+
+        console.log(`The total rating is ${total_rate}`);
+        return total_rate;
+    }
+
 
     // After calling highest_average, set the innerHTML
     const bestrating = document.querySelector(".bestrating");
@@ -198,5 +210,9 @@ btn.addEventListener('click', () => {
     const lowestrating = document.querySelector(".lowestrating");
     let { capName_lowest, average_lowest } = lowest_average(); // Destructure the object
     lowestrating.innerHTML = `The cap with the highest average rating is: ${capName_lowest} with an average of ${average_lowest}`;
+
+    const totalrating = document.querySelector(".totaRating");
+    let total_rate = total_rating (); // Destructure the object
+    totalrating.innerHTML = `Total number of rating submitted: ${total_rate}`;
 
 });
