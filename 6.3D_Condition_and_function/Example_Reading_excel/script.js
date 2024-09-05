@@ -155,22 +155,20 @@ btn.addEventListener('click', () => {
             if (averageRating > highestAvg) {
                 highestAvg = averageRating;
                 capWithHighestAvg = rowData[0]; // Cap Name (1st element, index 0)
+
             }
         });
 
         
      
-        console.log(`The cap with the highest average rating is ${capWithHighestAvg} with an average rating of ${highestAvg.toFixed(2)}.`);
+        result = console.log(`The cap with the highest average rating is ${capWithHighestAvg} with an average rating of ${highestAvg.toFixed(2)}.`);
 
-        return capWithHighestAvg;
+        return result;
      }
 
-
-
-
-        // After calling highest_average, set the innerHTML
-        const bestrating = document.querySelector(".bestrating");
-        let capWithHighestAvg = highest_average();
-        bestrating.innerHTML = `The cap with the highest average rating is: ${capWithHighestAvg}`;
-            
+    // After calling highest_average, set the innerHTML
+    const bestrating = document.querySelector(".bestrating");
+    let capWithHighestAvg = highest_average();
+    bestrating.innerHTML = capWithHighestAvg;
+        
 });
