@@ -162,7 +162,8 @@ btn.addEventListener('click', () => {
         
      
         result = console.log(`The cap with the highest average rating is ${capWithHighestAvg} with an average rating of ${highestAvg.toFixed(2)}.`);
-
+        // The issue in your current implementation is that you're trying to assign the result of console.log() to capWithHighestAvg and return it, 
+        // which will not work as expected because console.log() returns undefined. As a result, when you try to assign capWithHighestAvg to innerHTML, it will be undefined.
         return result;
      }
 
