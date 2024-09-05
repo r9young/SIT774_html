@@ -140,7 +140,7 @@ btn.addEventListener('click', () => {
    // next question is how could we add the data in html. 
 
 
-   const bestrating = document.querySelector(".bestrating");
+ 
 
     function highest_average() {
         let highestAvg = 0;
@@ -161,11 +161,16 @@ btn.addEventListener('click', () => {
         
      
         console.log(`The cap with the highest average rating is ${capWithHighestAvg} with an average rating of ${highestAvg.toFixed(2)}.`);
+
+        return capWithHighestAvg;
      }
 
-     highest_average()
 
-     bestrating.innerHTML = capWithHighestAvg;
-     
+
+
+        // After calling highest_average, set the innerHTML
+        const bestrating = document.querySelector(".bestrating");
+        let capWithHighestAvg = highest_average();
+        bestrating.innerHTML = `The cap with the highest average rating is: ${capWithHighestAvg}`;
             
 });
