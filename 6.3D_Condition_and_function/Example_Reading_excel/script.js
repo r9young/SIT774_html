@@ -136,11 +136,8 @@ btn.addEventListener('click', () => {
     }
 
 
-    // the problem of the following function is that it is not read the average column. it read the raw json data. 
-
-    // highest average built
-
-    // we need the abstract the array
+   // we have got the highest average rating 
+   // next question is how could we add the data in html. 
 
     function highest_average() {
         let highestAvg = 0;
