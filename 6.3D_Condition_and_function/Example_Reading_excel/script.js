@@ -139,6 +139,9 @@ btn.addEventListener('click', () => {
    // we have got the highest average rating 
    // next question is how could we add the data in html. 
 
+
+   const bestrating = document.querySelector(".bestrating");
+
     function highest_average() {
         let highestAvg = 0;
         let capWithHighestAvg = '';
@@ -154,11 +157,15 @@ btn.addEventListener('click', () => {
                 capWithHighestAvg = rowData[0]; // Cap Name (1st element, index 0)
             }
         });
+
+        
      
         console.log(`The cap with the highest average rating is ${capWithHighestAvg} with an average rating of ${highestAvg.toFixed(2)}.`);
      }
 
      highest_average()
+
+     bestrating.innerHTML = capWithHighestAvg;
      
             
 });
