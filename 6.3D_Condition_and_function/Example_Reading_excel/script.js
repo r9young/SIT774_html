@@ -209,18 +209,32 @@ btn.addEventListener('click', () => {
             let total = parseFloat(rowData[7]);
             let avg_rate = parseFloat(rowData[8]);
             sum_product += (total * avg_rate);
-            num_rating += num_rating;
+            
+        })
+
+        newDataArray.forEach(rowData => {
+            let total = parseFloat(rowData[7]);
+            num_rating += total;
         })
 
         console.log(sum_product);
         console.log(num_rating);
         
+
+
         let average_rating = sum_product / num_rating
-        console.log(average_rating);
-        return average_rating
+        console.log(average_rating.toFixed(2));
+        return average_rating.toFixed(2)
     }
     
     weight_rating()
+
+
+    // let weigh_rate = weight_rating();
+    // let category = capCategory(weigh_rate);
+    // console.log(category);
+
+    
 
 
 
@@ -243,6 +257,7 @@ btn.addEventListener('click', () => {
     averageNum.innerHTML = `Average number of ratings per cap: ${average_Num}`;
 
     const weightRating = document.querySelector(".weightRating");
-    let weight_Rating = weight_rating ()  // Destructure the object
-    weightRating.innerHTML = `Average number of ratings per cap: ${weight_Rating}`;
+    let weight_Rating = weight_rating (); 
+    let category = capCategory(weight_Rating);
+    weightRating.innerHTML = `Average number of ratings per cap: ${weight_Rating} which equates to a rating category of ${category}`;
 });
