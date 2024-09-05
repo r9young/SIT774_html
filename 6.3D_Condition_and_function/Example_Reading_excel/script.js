@@ -164,11 +164,39 @@ btn.addEventListener('click', () => {
         };
     }
 
+    function lowest_average() {
+        let lowestAvg = 10;
+        let capWithLowestAvg = '';
+    
+        // Loop through the newDataArray to find the highest average rating
+        newDataArray.forEach(rowData => {
+            // Extract the average rating (9th element, index 8)
+            let averageRating = parseFloat(rowData[8]); // Convert to number
+    
+            // Check if the current average rating is the highest
+            if (averageRating < lowestAvg) {
+                lowestAvg = averageRating;
+                capWithLowestAvg = rowData[0]; // Cap Name (1st element, index 0)
+            }
+        });
+
+        console.log(`The cap with the highest average rating is ${capWithLowestAvg} with an average rating of ${lowestAvg.toFixed(2)}.`);
+        
+        // Return both cap name and highest average rating as an object
+        return {
+            capName_lowest: capWithLowestAvg,
+            average_lowest: lowestAvg.toFixed(2) // Return the average as a formatted string
+        };
+    }
+
 
     // After calling highest_average, set the innerHTML
     const bestrating = document.querySelector(".bestrating");
     let { capName, average } = highest_average(); // Destructure the object
     bestrating.innerHTML = `The cap with the highest average rating is: ${capName} with an average of ${average}`;
 
-            
+    const lowestrating = document.querySelector(".lowestrating");
+    let { capName_lowest, average_lowest } = lowest_average(); // Destructure the object
+    lowestrating.innerHTML = `The cap with the highest average rating is: ${capName_lowest} with an average of ${average_lowest}`;
+
 });
