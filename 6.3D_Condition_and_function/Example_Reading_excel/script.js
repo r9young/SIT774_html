@@ -201,6 +201,28 @@ btn.addEventListener('click', () => {
         return total_rate;
     }
 
+    function weight_rating() {
+        let sum_product = 0; 
+        let num_rating = 0;
+        
+        newDataArray.forEach(rowData => {
+            let total = parseFloat(rowData[7]);
+            let avg_rate = parseFloat(rowData[8]);
+            sum_product += (total * avg_rate);
+            num_rating += num_rating;
+        })
+
+        console.log(sum_product);
+        console.log(num_rating);
+        
+        let average_rating = sum_product / num_rating
+        console.log(average_rating);
+        return average_rating
+    }
+    
+    weight_rating()
+
+
 
     // After calling highest_average, set the innerHTML
     const bestrating = document.querySelector(".bestrating");
@@ -211,8 +233,16 @@ btn.addEventListener('click', () => {
     let { capName_lowest, average_lowest } = lowest_average(); // Destructure the object
     lowestrating.innerHTML = `The cap with the highest average rating is: ${capName_lowest} with an average of ${average_lowest}`;
 
-    const totalrating = document.querySelector(".totaRating");
+    const totalrating = document.querySelector(".totalRating");
     let total_rate = total_rating (); // Destructure the object
     totalrating.innerHTML = `Total number of rating submitted: ${total_rate}`;
 
+
+    const averageNum = document.querySelector(".averageNumPerCap");
+    let average_Num = total_rating () / 10; // Destructure the object
+    averageNum.innerHTML = `Average number of ratings per cap: ${average_Num}`;
+
+    const weightRating = document.querySelector(".weightRating");
+    let weight_Rating = weight_rating ()  // Destructure the object
+    weightRating.innerHTML = `Average number of ratings per cap: ${weight_Rating}`;
 });
