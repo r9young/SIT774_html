@@ -2,23 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <head>
-        <p>dKin Caps</p>
-        <p>A young and inspiring organisation whose
-        primary purpose is to bring you the highest 
-        quality headwear available.</p>
-    </head>
-    <main>
-        <p>NODE.JS: Programming in the web server</p>
-        <p>This is a STATIC html page that is served from the web server... You should find this file in the <span>public_html</span> folder</p>
-        
-    </main>
-    <footer>
-        <p>&copy; 2024 A webpage footer with important info!</p>
-    </footer>
+    <h2>A Dynamically Created Page</h2>
+    <p>Your request this page at <strong><a class="time"></a>(Australian Eastern Standard Time)</strong></p>
+    <p>Please call again soon!</p>
+    <script>
+        document.querySelector('.time').textContent = new Date().toLocaleTimeString();  
+    </script>
+    
 </body>
 </html>

@@ -1,0 +1,56 @@
+* {
+    /* margin: 0;
+    padding: 0; */
+    box-sizing: border-box;
+}
+
+.head {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(106, 126, 216);  /* Corrected this line */
+}
+
+.head > p {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
+
+.head > p {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
+
+.head > :first-child {
+    font-size: 30px;
+    font-weight: bold;  
+}
+
+.main-text {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.main-text > :first-child {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.main-text > p > span {
+   color:red;
+}
+
+
+.foot {
+    background-color: black;
+}
+
+.foot > p {
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+}

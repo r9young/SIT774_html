@@ -27,6 +27,9 @@ app.listen(port, ()=> {
 
 app.use(express.static(path.join(__dirname, 'public')));
 // when a client visits http://localhost:3000/, Express will automatically serve the index.html file from the public directory (if it exists).
+// will automatically serve index.html because it's the default file for the root.
+// 
+
 
 app.get('/foreerror', (req, res) => {
   try {
@@ -40,7 +43,7 @@ app.get('/foreerror', (req, res) => {
 });
 
 
-app.get('/foreerror', (req, res) => {
+app.get('/forceerror', (req, res) => {
   try {
     console.log('Got a request to force an error ...');
     let f; // empty variable
@@ -57,7 +60,18 @@ app.get('/foreerror', (req, res) => {
 // localhost:3000/doenotexist
 // 404: File not found
 
-app.get('/doenotexist', (req, res) => {
+
+
+app.get('/doesnotexist.html', (req, res) => {
   console.log('File not found');
   res.status(404).send('File not found');
 })
+
+// Route to serve sample.html
+app.get('/sample', (req, res) => {
+  // Log the action (optional)
+  // console.log('Serving sample.html');
+  
+  // Send the file located at the specified path
+  res.sendFile(path.join(__dirname, 'sample.html'));
+});
