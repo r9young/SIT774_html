@@ -11,6 +11,7 @@ function processTextOld() {
     character_string ();
     word_string ();
     upperCase ();
+    number_occurances ();
     
 }
 
@@ -49,6 +50,28 @@ function upperCase () {
     let result = text.toLocaleUpperCase();
     const wordlength = document.getElementById("strResult3");
     wordlength.innerHTML = result
+}
+
+function number_occurances () {
+
+    const key_word = document.getElementById("searchWord").value.toLocaleLowerCase();
+    console.log(key_word);
+
+    const text = document.getElementById("exampleFormControlTextarea1").value;
+    let result = text.replace ("'"," ") // replace ' to a space " " to fix up the it's
+    word_array = result.split(" ");
+
+    let count = 0;
+    for (let i = 0; i < word_array.length; i++) {
+       if (word_array[i] == key_word) {
+            count ++;
+       }   
+    }
+    console.log(count);
+
+    const word_count = document.getElementById("strResult4");
+    word_count.innerHTML = count
+
 }
 
 
