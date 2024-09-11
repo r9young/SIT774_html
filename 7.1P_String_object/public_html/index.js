@@ -89,14 +89,11 @@ function number_char_first() {
     let result = text.substring(0, 25)
     let rest_position = text.length - 25
     let rest = text.substring(26, text.length)
-    
-    console.log(rest);
-    
-    // console.log(result.style.color);
 
     const first_charact = document.getElementById("strResult5");
     first_charact.innerHTML = result
     first_charact.style.color = "blue";
+    first_charact.innerHTML += `<span style="color: black;">${rest}</span>`;
 
     
 };
