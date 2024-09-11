@@ -13,6 +13,7 @@ function processTextOld() {
     upperCase ();
     number_occurances ();
     number_char_first();
+    number_char_last();
     
 }
 
@@ -95,34 +96,25 @@ function number_char_first() {
     first_charact.style.color = "blue";
     first_charact.innerHTML += `<span style="color: black;">${rest}</span>`;
 
-    
 };
 
-// function number_char_first() {
-//     // Get the text from the textarea
-//     const text = document.getElementById("exampleFormControlTextarea1").value;
-    
-//     // Extract the first 25 characters
-//     let result = text.substring(0, 25);
-    
-//     // Get the remaining characters
-//     let rest_position = text.length - 25;
-//     let rest = text.substring(25, text.length); // Fixed to include character at position 25
-
-//     // Log the remaining part of the string
-//     console.log(rest);
-
-//     // Get the element where you want to display the first 25 characters
-//     const first_charact = document.getElementById("strResult5");
-    
-//     // Display the first 25 characters and change the text color to blue
-//     first_charact.innerHTML = result;
-//     first_charact.style.color = "blue"; // Set the color style on the element
-// };
 
 function number_char_last() {
+
+    const text = document.getElementById("exampleFormControlTextarea1").value;
     
-};
+    // Get the last 25 characters from the end
+    let last = text.substring(text.length - 25, text.length );
+    let front = text.substring(0, text.length);
+
+    // Set the first part of the string in the element
+    const first_charact = document.getElementById("strResult6");
+    first_charact.innerHTML = front;
+    // last.style.color = "blue";
+
+    // Append the last 25 characters styled in black
+    first_charact.innerHTML += `<span style="color: blue;">${last}</span>`;
+}
 
 
 
