@@ -20,18 +20,27 @@ app.use(express.static('public_html'));
 // ....
 
 app. get('/', (req, res) => {
-    res.sendFile(__dirname + "/index.html")
+    res.sendFile(__dirname + "public_html/index.html")
     // __dirname is a global variable in Node.js that represents the directory name of the current module (the file that is being executed).
 })
 
 // Route to handle the 'like' action
 app.post('/likegrey', (req, res) => {
-    // Here, you can access the data sent by the client
-    console.log(req.body);  // Outputs { user: 'John', like: 'Grey' }
+    // Log request body (optional)
+    console.log(req.body);
   
-    // Send a response back to the client
-    res.send("You liked 'Grey'!");
-});
+    // Send an HTML page with the message
+    res.send(`
+      <html>
+        <body>
+          <h1>You liked 'Grey'!</h1>
+          <p>Thank you for your vote. We appreciate your feedback.</p>
+          <a href="/">Go back to the main page</a>
+        </body>
+      </html>
+    `);
+  });
+  
   
 // < ADD CODE HERE >>
 // The handler for a GET request on route '/likeyellow' and return a dynamic page (fragment)

@@ -58,9 +58,11 @@
                         <h5 class="card-title">Grey Cap</h5>
                         <p class="card-text">Grey is a colour that is subtle and likeable.</p>
                         <div class="d-grid justify-content-md-center">
-                            <button class="btn btn-primary" id="likeGreyBtn">
-                                LIKE 'Grey'
-                            </button>
+                            <form action="/likegrey" method="POST">
+                                <button type="submit" class="btn btn-primary" id="likeGreyBtn">
+                                    LIKE 'Grey'
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -92,8 +94,9 @@
     <!-- THis is a better approach than adding a direct onclick() method -->
     <!-- to the button itself. Although, the JS code needs to be at the end -->
     <!-- after the DOM (and buttons) have ben created. -->
-    <script src="index.js"></script>
+ 
 
+    <script src="/index.js"></script>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
