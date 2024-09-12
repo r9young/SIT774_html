@@ -6,8 +6,12 @@ const app = express ();
 const port = 3000;
 
 // Have the logging code
-app. use (morgan (' common'));
+app.use(morgan('common'));
 
+
+app.use(express.static('public_html')); 
+
+// Serve static files like index.html and index.js
 
 
 
@@ -21,11 +25,13 @@ app. get('/', (req, res) => {
 })
 
 // Route to handle the 'like' action
-app.post('/like-grey', (req, res) => {
-    console.log("User liked 'Grey'!");
+app.post('/likegrey', (req, res) => {
+    // Here, you can access the data sent by the client
+    console.log(req.body);  // Outputs { user: 'John', like: 'Grey' }
+  
+    // Send a response back to the client
     res.send("You liked 'Grey'!");
 });
-
   
 // < ADD CODE HERE >>
 // The handler for a GET request on route '/likeyellow' and return a dynamic page (fragment)

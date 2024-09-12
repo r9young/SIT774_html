@@ -1,8 +1,15 @@
+
+
 document.getElementById('likeGreyBtn').addEventListener('click', () => {
-    fetch('/like-grey', {
-      method: 'POST'
-    })
-    .then(response => response.text())
-    .then(data => alert(data))  // Show the server's response in an alert
-    .catch(error => console.error('Error:', error));
+
+  console.log("User click the button");
+  
+  fetch('/likegrey', {
+    method: 'POST'  // Correct way to set the HTTP method
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log(data);
+    alert(data)})
+  .catch(error => console.error('Error:', error));
 });
