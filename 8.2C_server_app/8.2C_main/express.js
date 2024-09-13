@@ -40,16 +40,39 @@ app. get('/', (req, res) => {
 app.post('/likegrey',requestTime, (req, res) => {
     // Log request body (optional)
     // console.log(req.body);
-    console.log(`Request time: ${new Date(req.requestTime).toLocaleString()}`);
+    // console.log(`Request time: ${new Date(req.requestTime).toLocaleString()}`);
+
+    const d = new Date();
+    // const months = [
+    //     "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+    //     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    // ];
+
+    // const weekdays = [
+    //     "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+    // ];
+
+
+
+    // let monthName = months[d.getMonth()]; // getMonth() returns a value between 0-11
+    // let yearName = d.getFullYear(); 
+    // // let dayName = d.getday();
+    // let dayName = d.getDate();
+    // let dayOfWeek = weekdays[d.getDay()];
+    // let time = d.getTime()
 
     // Send an HTML page with the message
     res.send(`
         <html>
         <body>
-            <h1>You liked 'Grey'!</h1>
-            <p>Thank you for your vote. We appreciate your feedback.</p>
-            <a href="/">Go back to the main page</a>
-            <p>Request received at: ${new Date(req.requestTime).toLocaleString()}</p>
+            <h1>Thank you for your GREY vote!</h1>
+            <p><b>Vote submitted at: ${d}</b></p>
+            <p><b>Vote submitted for the Grey cap at: ${d}</b></p>
+            <p>That's another vote for the likeable grey cap.</p>
+            <p>There are a total of 9 counted [YELLOW LIKES: 6 and GREY LIKES: 3]
+            <p>Pleae call again soon!</p>
+            <a href="/">Click here to return to main page</a>
+            
         </body>
         </html>
     `);
