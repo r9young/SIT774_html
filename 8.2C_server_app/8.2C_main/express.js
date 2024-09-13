@@ -52,7 +52,7 @@ app.post('/likegrey', (req, res) => {
 // ...
 // Route to handle the 'likeyellow' action
 app.post('/likeyellow', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     res.send(`
       <html>
         <body>
@@ -63,6 +63,9 @@ app.post('/likeyellow', (req, res) => {
       </html>
     `);
   });
+
+
+  
   
   
   
