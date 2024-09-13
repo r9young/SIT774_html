@@ -5,6 +5,12 @@ const morgan = require('morgan');
 const app = express ();
 const port = 3000;
 
+let grey_count=0;
+let yellow_count=0;
+
+
+
+
 const requestTime = function (req, res, next) {
     req.requestTime = Date.now()
     next()
@@ -41,42 +47,29 @@ app.post('/likegrey',requestTime, (req, res) => {
     // Log request body (optional)
     // console.log(req.body);
     // console.log(`Request time: ${new Date(req.requestTime).toLocaleString()}`);
+    grey_count++;
+    let total_count = grey_count + yellow_count;
+
+
 
     const d = new Date();
-    // const months = [
-    //     "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-    //     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    // ];
-
-    // const weekdays = [
-    //     "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
-    // ];
-
-
-
-    // let monthName = months[d.getMonth()]; // getMonth() returns a value between 0-11
-    // let yearName = d.getFullYear(); 
-    // // let dayName = d.getday();
-    // let dayName = d.getDate();
-    // let dayOfWeek = weekdays[d.getDay()];
-    // let time = d.getTime()
-
-    // Send an HTML page with the message
     res.send(`
         <html>
         <body>
             <h1>Thank you for your GREY vote!</h1>
             <p><b>Vote submitted at: ${d}</b></p>
-            <p><b>Vote submitted for the Grey cap at: ${d}</b></p>
+            <p><b>Vote submitted for the Grey Cap at: ${d}</b></p>
             <p>That's another vote for the likeable grey cap.</p>
-            <p>There are a total of 9 counted [YELLOW LIKES: 6 and GREY LIKES: 3]
-            <p>Pleae call again soon!</p>
-            <a href="/">Click here to return to main page</a>
-            
+            <p>There are a total of ${total_count} counted [YELLOW LIKES: ${yellow_count} and GREY LIKES: ${grey_count}] </p>
+            <p>Grey cap votes: ${grey_count}</p>
+            <p>Please call again soon!</p>
+            <a href="/">Click here to return to the main page</a>
         </body>
         </html>
     `);
 });
+
+
 
 
 // < ADD CODE HERE >>
@@ -85,24 +78,24 @@ app.post('/likegrey',requestTime, (req, res) => {
 // Route to handle the 'likeyellow' action
 app.post('/likeyellow', (req, res) => {
     // console.log(req.body);
+    yellow_count++;
+    let total_count = grey_count + yellow_count;
+
+    const d = new Date();
     res.send(`
       <html>
         <body>
-          <h1>You liked 'Yellow'!</h1>
-          <p>Thank you for your vote. We appreciate your feedback.</p>
-          <a href="/">Go back to the main page</a>
+            <h1>Thank you for your GREY vote!</h1>
+            <p><b>Vote submitted at: ${d}</b></p>
+            <p><b>Vote submitted for the Yellow Cap at: ${d}</b></p>
+            <p>That's another vote for the likeable grey cap.</p>
+            <p>There are a total of ${total_count} counted [YELLOW LIKES: ${yellow_count} and GREY LIKES: ${grey_count}] </p>
+            <p>Please call again soon!</p>
+            <a href="/">Click here to return to the main page</a>
         </body>
       </html>
     `);
   });
-
-
-  
-  
-  
-  
-
-
 
 // The last route handler can be used to return your own error messages
 // it is expecting an 'Error' object as the first parameter, which is generated

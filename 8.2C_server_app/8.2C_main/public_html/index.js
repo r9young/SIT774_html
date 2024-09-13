@@ -1,5 +1,5 @@
 //Grey Cap
-document.getElementById('likeGreyBtn').addEventListener('click', () => {
+document.getElementById('likeGreyBtn').addEventListener('submit', () => {
 
   console.log("User click the button");
   
@@ -21,7 +21,7 @@ document.getElementById('likeGreyBtn').addEventListener('click', () => {
 });
 
 
-document.getElementById('likeYellowBtn').addEventListener('click', () => {
+document.getElementById('likeYellowBtn').addEventListener('submit', () => {
   console.log("User clicked the Yellow button");
 
   fetch('/likeyellow', {
