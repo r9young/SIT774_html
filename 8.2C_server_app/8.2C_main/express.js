@@ -5,6 +5,13 @@ const morgan = require('morgan');
 const app = express ();
 const port = 3000;
 
+const requestTime = function (req, res, next) {
+    req.requestTime = Date.now()
+    next()
+}
+
+
+
 // Tell our application to serve all the files under the 'public_html directory app use(express.static('public_html'))
 // < ADD GLOABL VARIABLES HERE >>
 // ....
@@ -30,9 +37,10 @@ app. get('/', (req, res) => {
 // ...
 // Route to handle the 'likegrey' action
 
-app.post('/likegrey', (req, res) => {
+app.post('/likegrey',requestTime, (req, res) => {
     // Log request body (optional)
     // console.log(req.body);
+    console.log(`Request time: ${new Date(req.requestTime).toLocaleString()}`);
 
     // Send an HTML page with the message
     res.send(`
@@ -41,6 +49,7 @@ app.post('/likegrey', (req, res) => {
             <h1>You liked 'Grey'!</h1>
             <p>Thank you for your vote. We appreciate your feedback.</p>
             <a href="/">Go back to the main page</a>
+            <p>Request received at: ${new Date(req.requestTime).toLocaleString()}</p>
         </body>
         </html>
     `);
