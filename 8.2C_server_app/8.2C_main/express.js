@@ -32,7 +32,7 @@ app. get('/', (req, res) => {
 
 app.post('/likegrey', (req, res) => {
     // Log request body (optional)
-    console.log(req.body);
+    // console.log(req.body);
 
     // Send an HTML page with the message
     res.send(`

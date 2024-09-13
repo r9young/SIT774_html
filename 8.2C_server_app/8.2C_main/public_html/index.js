@@ -1,4 +1,3 @@
-
 //Grey Cap
 document.getElementById('likeGreyBtn').addEventListener('click', () => {
 
@@ -20,7 +19,6 @@ document.getElementById('likeGreyBtn').addEventListener('click', () => {
   })
   .catch(error => console.error('Error:', error));
 });
-
 
 
 document.getElementById('likeYellowBtn').addEventListener('click', () => {
