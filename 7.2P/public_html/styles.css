@@ -62,3 +62,16 @@ footer {
     display: none;
 }
 
+.output > ul > li {
+    color: gray !important;
+    margin-bottom: 2px;
+}
+
+.output p {
+    color: black;
+    font-weight: bold;
+}
+
+.output-visible {
+    background-color: orange !important;
+}
