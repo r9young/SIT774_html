@@ -21,22 +21,29 @@ app.get('/', function(req, res) {
 
 app.post('/submitmembership', function(req, res) {
     const firstname = req.body.firstname; // Extract firstname from the POST request
-    if (!firstname || firstname.trim() === '') {
-        res.render('thankyou', { title: 'Thank You', firstname: 'First name is required!' });
-        return;
-    } else {
-        res.render('thankyou', { title: 'Thank You', firstname: firstname });
-        // res.render() will look in a `views` folder for the view.
-        // Express is automatically looking in the views folder for the corresponding EJS files. 
-        // By default, Express expects to find the views (EJS files) inside a directory named views.
-    }
-    // const surename = req.body.surename;   // Extract surename from the POST request
-    // const email = req.body.email; 
-    // const mobileNumber = req.body.mobileNumber;    
-    // const inputNumCaps = req.body.inputNumCaps
-    
+    const surename = req.body.surename;   // Extract surename from the POST request
+    const email = req.body.email; 
+    const mobileNumber = req.body.mobileNumber;    
+    const inputNumCaps = req.body.inputNumCaps
+
+    const array = [];
+
+    array.forEach(element => {
+        if (element.toLowerCase() === firstname.toLowerCase() || element.toLowerCase() === surename.toLowerCase()) {
+            return res.render('thankyou', { title: 'error', firstname: 'First name or Surename already exists!', surename: 'First name or Surename already exists!' });
+        }   
+    });
+
+    // if (!firstname || !surename || !email || !mobileNumber || !inputNumCaps) {
+    //     // If any required field is missing, render the thank you page with an error message
+    //     return res.render('thankyou', { title: 'error', firstname: 'First name is required!', surename: 'First name is required!' });
+    // } else {
+    //     // If all required fields are present, render the thank you page with the submitted data
+    //     return res.render('thankyou', { title: 'Thank You', firstname: firstname, surename: surename, email: email, mobileNumber: mobileNumber, inputNumCaps: inputNumCaps });
+    // }
     
 });
+
 
 
 app.listen(8000);

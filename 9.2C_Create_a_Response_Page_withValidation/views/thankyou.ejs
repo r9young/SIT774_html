@@ -23,14 +23,34 @@
 
             <div>
                 <table class="table table-bordered">
+                    <% if (firstname && firstname !== 'First name is required!') { %>
+                        <tr>
+                            <th scope="row" style="width: 20%;">Firstname</th>
+                            <td style="width: 80%;"><%= firstname %></td> 
+                        </tr>
+                    <% } %>
+                
+                    <% if (surename && surename !== 'Surname is required!') { %>
+                        <tr>
+                            <th scope="row" style="width: 20%;">Surename</th>
+                            <td style="width: 80%;"><%= surename %></td> 
+                        </tr>
+                    <% } %>
+                </table>
+
+                <table class="table table-bordered">
                     <tbody>
                         <tr>
                             <th scope="row" style="width: 20%;">Firstname</th>
                             <td style="width: 80%;"><%= firstname %></td> 
                         </tr>
+                        <tr>
+                            <th scope="row" style="width: 20%;">Surename</th>
+                            <td style="width: 80%;"><%= surename %></td> 
+                        </tr>
               
                     </tbody>
-                    </table>
+                </table>
             </div>
         </div>
     </main>
