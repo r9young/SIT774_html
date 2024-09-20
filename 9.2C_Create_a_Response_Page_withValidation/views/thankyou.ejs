@@ -40,8 +40,10 @@
                     </tbody>
                 </table>
 
-                <% if (comments.length < 10) { %>
-                    <div class="comment-length">Comments must be at least 10 characters long</div>
+                <% if (comments.length < 20) { %>
+                    <div class="comment-length">Thank your for your <a>BREIF</a>comment... maybe a few more words next time :/ </div>
+                <% } %> else { %>
+                    <div class="comment-length">Wonderful! We really appreciate the thoughts you shared in your <a>DETAILED</a>comments!</div>
                 <% } %>
                 <a href="/" class="">Click here to return to the feedback form</a>
             </div>

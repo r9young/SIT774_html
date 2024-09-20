@@ -32,6 +32,8 @@ app.post('/submitmembership', function(req, res) {
     // check if all fields are filled
     const array = [firstname, surename, email, mobile, numcaps, capstyle, comments];
 
+
+    console.log(array);
     console.log (array)
 
     let count = 0;
@@ -44,10 +46,7 @@ app.post('/submitmembership', function(req, res) {
 
     console.log(count)
 
-    
-
-  
-    // res.render('pages/thankyou', { title: 'Thank You', firstname, surename, email,mobileNumber, inputNumCaps, capstyles, comments}); // Pass firstname to the thankyou page
+    //bug: capstyle is not correctly getting checked. It should be 'uppercase' or 'lowercase'
 
     if (!firstname || !surename || !email || !  mobile  || !numcaps || !capstyle  || !comments  ) {
         res.render('alert', { title: 'Thank You', firstname, surename,email,mobile,numcaps,capstyle,comments, count});
