@@ -25,10 +25,13 @@ app.post('/submitmembership', function(req, res) {
     const email = req.body.email; 
     const mobileNumber = req.body.mobileNumber;    
     const inputNumCaps = req.body.inputNumCaps
-    res.render('pages/thankyou', { title: 'Thank You', firstname, surename, email,mobileNumber, inputNumCaps }); // Pass firstname to the thankyou page
+    const capstyles = req.body.capstyles
+    const comments = req.body.comments
+
+    res.render('pages/thankyou', { title: 'Thank You', firstname, surename, email,mobileNumber, inputNumCaps, capstyles, comments}); // Pass firstname to the thankyou page
     
 });
 
 
-app.listen(8000);
-console.log('Server is listening on port 8000');
+app.listen(3000);
+console.log('Server is listening on port 3000');
