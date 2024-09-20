@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // index page
 app.get('/', function(req, res) {
-    res.render('pages/index', { title: 'Home Page', firstname: '' });
+    res.render('pages/index', { title: 'Home Page'});
   // res.rend() will look in a `views` folder for the view.
   // Express is automatically looking in the views folder for the corresponding EJS files. By default, Express expects to find the views (EJS files) inside a directory named views.
 
@@ -21,7 +21,12 @@ app.get('/', function(req, res) {
 
 app.post('/submitmembership', function(req, res) {
     const firstname = req.body.firstname; // Extract firstname from the POST request
-    res.render('pages/thankyou', { firstname: firstname }); // Pass firstname to the thankyou page
+    const surename = req.body.surename;   // Extract surename from the POST request
+    const email = req.body.email; 
+    const mobileNumber = req.body.mobileNumber;    
+    const inputNumCaps = req.body.inputNumCaps
+    res.render('pages/thankyou', { title: 'Thank You', firstname, surename, email,mobileNumber, inputNumCaps }); // Pass firstname to the thankyou page
+    
 });
 
 
