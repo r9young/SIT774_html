@@ -22,29 +22,22 @@ app.get('/', function(req, res) {
 app.post('/submitmembership', function(req, res) {
     const firstname = req.body.firstname; // Extract firstname from the POST request
     const surename = req.body.surename;   // Extract surename from the POST request
-    const email = req.body.email; 
-    const mobileNumber = req.body.mobileNumber;    
-    const inputNumCaps = req.body.inputNumCaps
+    // const email = req.body.email; 
+    // const mobileNumber = req.body.mobileNumber;    
+    // const inputNumCaps = req.body.inputNumCaps
+    // const capstyles = req.body.capstyles
+    // const comments = req.body.comments
 
-    const array = [];
+    // res.render('pages/thankyou', { title: 'Thank You', firstname, surename, email,mobileNumber, inputNumCaps, capstyles, comments}); // Pass firstname to the thankyou page
 
-    array.forEach(element => {
-        if (element.toLowerCase() === firstname.toLowerCase() || element.toLowerCase() === surename.toLowerCase()) {
-            return res.render('thankyou', { title: 'error', firstname: 'First name or Surename already exists!', surename: 'First name or Surename already exists!' });
-        }   
-    });
-
-    // if (!firstname || !surename || !email || !mobileNumber || !inputNumCaps) {
-    //     // If any required field is missing, render the thank you page with an error message
-    //     return res.render('thankyou', { title: 'error', firstname: 'First name is required!', surename: 'First name is required!' });
-    // } else {
-    //     // If all required fields are present, render the thank you page with the submitted data
-    //     return res.render('thankyou', { title: 'Thank You', firstname: firstname, surename: surename, email: email, mobileNumber: mobileNumber, inputNumCaps: inputNumCaps });
-    // }
+    if (!firstname || !surename ) {
+        res.render('alert', { title: 'Thank You', firstname, surename});
+    } else {
+        res.render('thankyou', { title: 'Thank You', firstname, surename}); // Pass firstname
+    }
     
 });
 
 
-
-app.listen(8000);
-console.log('Server is listening on port 8000');
+app.listen(3000);
+console.log('Server is listening on port 3000');
