@@ -32,28 +32,17 @@
                             <th scope="row" style="width: 20%;">Surename</th>
                             <td style="width: 80%;"><%= surename %></td>
                         </tr>
-                        <tr>
-                            <th scope="row" style="width: 20%;">Email</th>
-                            <td style="width: 80%;"><%= email %></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" style="width: 20%;">Mobile</th>
-                            <td style="width: 80%;"><%= mobileNumber %></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" style="width: 20%;">Cap Style</th>
-                            <td style="width: 80%;"><%= capstyles %></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" style="width: 20%;"># Caps Owned</th>
-                            <td style="width: 80%;"><%= inputNumCaps %></td>
-                        </tr>
+               
                         <tr>
                             <th scope="row" style="width: 20%;">Comments</th>
                             <td style="width: 80%;"><%= comments %></td>
                         </tr>
                     </tbody>
                 </table>
+
+                <% if (comments.length < 10) { %>
+                    <div class="comment-length">Comments must be at least 10 characters long</div>
+                <% } %>
                 <a href="/" class="">Click here to return to the feedback form</a>
             </div>
         </div>

@@ -37,6 +37,12 @@
                             <td style="width: 80%;">Not provided</td>
                         </tr>
                         <% } %>
+                        <% if (!comments) { %> <!-- If surename is not filled, show the row -->
+                        <tr>
+                            <th scope="row" style="width: 20%;">Comments</th>
+                            <td style="width: 80%;">Not provided</td>
+                        </tr>
+                        <% } %>
                     </tbody>
                     
                 </table>

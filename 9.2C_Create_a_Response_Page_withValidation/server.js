@@ -26,14 +26,14 @@ app.post('/submitmembership', function(req, res) {
     // const mobileNumber = req.body.mobileNumber;    
     // const inputNumCaps = req.body.inputNumCaps
     // const capstyles = req.body.capstyles
-    // const comments = req.body.comments
-
+    const comments = req.body.comments
+  
     // res.render('pages/thankyou', { title: 'Thank You', firstname, surename, email,mobileNumber, inputNumCaps, capstyles, comments}); // Pass firstname to the thankyou page
 
     if (!firstname || !surename ) {
-        res.render('alert', { title: 'Thank You', firstname, surename});
+        res.render('alert', { title: 'Thank You', firstname, surename, comments});
     } else {
-        res.render('thankyou', { title: 'Thank You', firstname, surename}); // Pass firstname
+        res.render('thankyou', { title: 'Thank You', firstname, surename, comments}); // Pass firstname
     }
     
 });
