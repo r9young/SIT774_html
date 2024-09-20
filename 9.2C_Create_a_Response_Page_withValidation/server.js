@@ -22,16 +22,16 @@ app.get('/', function(req, res) {
 app.post('/submitmembership', function(req, res) {
     const firstname = req.body.firstname; // Extract firstname from the POST request
     const surename = req.body.surename;   // Extract surename from the POST request
-    // const email = req.body.email; 
-    // const mobileNumber = req.body.mobileNumber;    
-    // const inputNumCaps = req.body.inputNumCaps
-    // const capstyles = req.body.capstyles
+    const email = req.body.email; 
+    const mobile = req.body.mobileNumber;    
+    const numcaps = req.body.inputNumCaps
+    const capstyle = req.body.capstyles
     const comments = req.body.comments
   
     // res.render('pages/thankyou', { title: 'Thank You', firstname, surename, email,mobileNumber, inputNumCaps, capstyles, comments}); // Pass firstname to the thankyou page
 
     if (!firstname || !surename ) {
-        res.render('alert', { title: 'Thank You', firstname, surename, comments});
+        res.render('alert', { title: 'Thank You', firstname, surename,email,mobile,numcaps,capstyle,comments});
     } else {
         res.render('thankyou', { title: 'Thank You', firstname, surename, comments}); // Pass firstname
     }
