@@ -27,11 +27,30 @@ app.post('/submitmembership', function(req, res) {
     const numcaps = req.body.inputNumCaps
     const capstyle = req.body.capstyles
     const comments = req.body.comments
+    
+    
+    // check if all fields are filled
+    const array = [firstname, surename, email, mobile, numcaps, capstyle, comments];
+
+    console.log (array)
+
+    let count = 0;
+    array.forEach((element) => {
+        if (element == "" || element == null) {
+            // count increase 1;
+            count++;
+        }
+    });
+
+    console.log(count)
+
+    
+
   
     // res.render('pages/thankyou', { title: 'Thank You', firstname, surename, email,mobileNumber, inputNumCaps, capstyles, comments}); // Pass firstname to the thankyou page
 
-    if (!firstname || !surename ) {
-        res.render('alert', { title: 'Thank You', firstname, surename,email,mobile,numcaps,capstyle,comments});
+    if (!firstname || !surename || !email || !  mobile  || !numcaps || !capstyle  || !comments  ) {
+        res.render('alert', { title: 'Thank You', firstname, surename,email,mobile,numcaps,capstyle,comments, count});
     } else {
         res.render('thankyou', { title: 'Thank You', firstname, surename, comments}); // Pass firstname
     }
