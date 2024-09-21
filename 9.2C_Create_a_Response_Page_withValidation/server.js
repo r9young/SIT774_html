@@ -27,14 +27,15 @@ app.post('/submitmembership', function(req, res) {
     const numcaps = req.body.inputNumCaps
     const capstyle = req.body.capstyles
     const comments = req.body.comments
+
+    console.log(capstyle);
     
     
     // check if all fields are filled
     const array = [firstname, surename, email, mobile, numcaps, capstyle, comments];
 
-
-    console.log(array);
-    console.log (array)
+    // console.log(array);
+    // console.log (array)
 
     let count = 0;
     array.forEach((element) => {
@@ -44,14 +45,14 @@ app.post('/submitmembership', function(req, res) {
         }
     });
 
-    console.log(count)
+    // console.log(count)
 
     //bug: capstyle is not correctly getting checked. It should be 'uppercase' or 'lowercase'
 
     if (!firstname || !surename || !email || !  mobile  || !numcaps || !capstyle  || !comments  ) {
         res.render('alert', { title: 'Thank You', firstname, surename,email,mobile,numcaps,capstyle,comments, count});
     } else {
-        res.render('thankyou', { title: 'Thank You', firstname, surename, comments}); // Pass firstname
+        res.render('thankyou', { title: 'Thank You', firstname, surename,email,mobile,numcaps,capstyle,comments}); // Pass firstname
     }
     
 });
