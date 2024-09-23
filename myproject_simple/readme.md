@@ -32,14 +32,13 @@ result: your server and database are working correctly
 --------------------------------
 
 
-debug:
+Debug:
 
-script.js:22 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'json')
-    at HTMLFormElement.<anonymous> (script.js:22:35)
+script.js:22 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'json') at HTMLFormElement.<anonymous> (script.js:22:35)
 (anonymous) @ script.js:22Understand this error
 content.js:2 Error: <svg> attribute viewBox: Expected number, "0 0 100% 4".
 
-error message in console: 
+
 
 ```javascript
 
@@ -70,3 +69,5 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
 });
 
 ```
+
+Problems is:  async/await or .then() cannot be used at the same time.
