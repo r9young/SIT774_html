@@ -71,3 +71,77 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
 ```
 
 Problems is:  async/await or .then() cannot be used at the same time.
+
+
+fixed
+
+
+--------------------------------------------------------------------
+
+
+next step: we will add membershipdetails page, we will use thankyou.ejs as a reference. 
+
+**Issue 1:** Initially, we run `createDB.js` using `node createDB.js` to set up the database. However, when using `index.js` to fetch data, how should we manage that? Do we simply run `node index.js`?
+
+
+Here’s how it works:
+
+- **`createDB.js`**: This file is only for **initializing** or **setting up** your SQLite database. You run it once when you need to **create or populate** your database. After that, you don’t need to run it again unless you want to reset or change the database structure.
+
+- **`index.js`**: Once the database is set up, you only need to run `index.js` to **fetch data** or handle any other database operations. This is the main file you’ll use to manage your app.
+
+
+- **how to drop the entire table in database.sqlite**
+
+sqlite3 database.sqlite
+
+DROP TABLE table_name;
+
+but finally,I believe that my code is ok because it included the table creation function which only creates tables if the table does not exist
+
+
+Issue 2: need a sample code to GET data from database - database.sqlite
+
+Sample code
+
+```javascript
+
+const sqlite3 = require('sqlite3').verbose();
+
+// Connect to the SQLite database
+let db = new sqlite3.Database('./database.sqlite', sqlite3.OPEN_READWRITE, (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the SQLite database.');
+});
+
+// Function to fetch data from the 'users' table
+const getData = () => {
+  const sql = `SELECT firstname, surname FROM users`; // Query for firstname and surname from 'users' table
+
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      throw err;
+    }
+
+    // Loop through the rows and log the data
+    rows.forEach((row) => {
+      console.log(`Firstname: ${row.firstname}, Surname: ${row.surname}`);
+    });
+  });
+};
+
+// Call the function to get data
+getData();
+
+// Close the database connection when done
+db.close((err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Closed the database connection.');
+});
+
+```
+
