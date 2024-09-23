@@ -10,11 +10,14 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
             return;// Stops the execution of the code, so the fetch request won't run
         }
     
-        const response = await fetch('http://localhost:3000/saveUser', {
+        const response = await fetch('http://localhost:4000/saveUser', {
             method: 'POST', // send data to the server
             headers: { 'Content-Type': 'application/json' }, // tell server that the request body contains JSON data. 
             body: JSON.stringify({ firstname, surename}) //convert two values into a JSON  string
-        });
+        })
+        .then(response => response.json())
+        .then(data => console.log(data)) // Handle server response
+        .catch(error => console.error('Error:', error));
 
         const result = await response.json();
         alert(result.message);
