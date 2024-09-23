@@ -31,9 +31,28 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
     } catch (error) {
         console.error('Error:', error); // Handle any errors that occur
     }
+
+
+
+
+
 });
 
 
+
+
+document.getElementById('getfeedbackBtn').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+
+    try {
+        // Send data to the server
+        const get = await get('http://localhost:4000/saveUser', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({ firstname, surename }) // Convert to JSON string
+        });
+});
 
 
 
