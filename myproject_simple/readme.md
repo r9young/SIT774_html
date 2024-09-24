@@ -145,3 +145,56 @@ db.close((err) => {
 
 ```
 
+
+----------------------------------------------------
+
+### Rendering Dynamic Table Rows in EJS Templates Using Data from a Database
+
+
+becasue each user's information will be rendered in a new line and rendered in the same column as the use of the same data source. 
+
+Here's how you can modify your code to fix the issue:
+
+Collect all rows in an array.
+Pass the entire array to the EJS template.
+Update the getData function in index.js:
+
+```javascript
+const getData = (res) => {
+    const sql = `SELECT firstname, surename FROM users`; // Query for firstname and surname from 'users' table
+
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+
+        // Render the 'thankyou' template with the rows data
+        res.render('thankyou', { title: 'Thank You', rows: rows });
+    });
+};
+```
+
+Update your EJS template (thankyou.ejs) to iterate over the rows array:
+
+```javascript
+
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Sure Name</th>
+    </tr>
+    <% rows.forEach(function(row) { %>
+        <tr>
+            <td style="width: 80%;"><%= row.firstname %></td>
+            <td style="width: 80%;"><%= row.surename %></td>
+        </tr>
+    <% }); %>
+</table>
+
+```
+
+With these changes:
+
+The getData function fetches all rows from the database and passes them to the thankyou template.
+The thankyou.ejs template iterates over the rows array and creates a table row for each entry.
+This should resolve the error and correctly render the data in your EJS template.

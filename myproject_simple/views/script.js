@@ -13,7 +13,7 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
 
     try {
         // Send data to the server
-        const response = await fetch('http://localhost:4000/saveUser', {
+        const response = await fetch('http://localhost:4000/submitmembership', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, 
             body: JSON.stringify({ firstname, surename }) // Convert to JSON string
@@ -31,29 +31,23 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
     } catch (error) {
         console.error('Error:', error); // Handle any errors that occur
     }
-
-
-
-
-
 });
-
-
 
 
 document.getElementById('getfeedbackBtn').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-
     try {
         // Send data to the server
-        const get = await get('http://localhost:4000/saveUser', {
+        const get = await fetch('http://localhost:4000/feedback', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, 
             body: JSON.stringify({ firstname, surename }) // Convert to JSON string
         });
-});
-
+    } catch (error) {
+        console.error('Error:', error); // Handle any errors that occur
+    }
+})
 
 
 
