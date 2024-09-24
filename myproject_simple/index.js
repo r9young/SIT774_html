@@ -59,14 +59,15 @@ const postData = (req, res) => {
     // db.run(sql, [firstname, surename], function (err) { ... }): Executes the SQL query with the provided values
     // function (err) {...} is a callback function. 
         if (err) {
-            res.status(400).json({ error: err.message });
-            return;
+            return res.status(400).json({ error: err.message });
+        } else {
+            console.log("Rendering thankyou.ejs");  
+            res.render('thankyou', { title: 'Thank You', firstname, surename});
         }
-        res.json({ // send a json response to user
-            message: 'User saved',
-            userId: this.lastID
-        });
+       
     });
+
+    
 }
 
 // ----------------------------------------------------------------
@@ -91,20 +92,18 @@ const getData = (res) => {
            
             console.log(`Firstname: ${row.firstname}, Surname: ${row.surename}`);
 
-            res.render('thankyou', { title: 'Thank You', rows: rows });
+            res.render('submit', { title: 'Thank You', rows: rows });
 
         });
     });
 };
 
 
-// Close the database connection when done
-// db.close((err) => {
-//   if (err) {
-//     return console.error(err.message);
-//   }
-//   console.log('Closed the database connection.');
-// });
+// ----------------------------------------------------------------
+
+
+
+
 
 app.listen(4000);
 console.log('Server is listening on port 4000');

@@ -1,4 +1,3 @@
-
 document.getElementById('postMembershipForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -25,8 +24,8 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
         }
 
         // Parse the JSON response from the server
-        const result = await response.json();
-        console.log(result); // Use the parsed JSON data
+        // const result = await response.json();
+        // console.log(result); // Use the parsed JSON data
 
     } catch (error) {
         console.error('Error:', error); // Handle any errors that occur
@@ -47,6 +46,8 @@ document.getElementById('getfeedbackBtn').addEventListener('submit', async funct
     } catch (error) {
         console.error('Error:', error); // Handle any errors that occur
     }
+
+
 })
 
 

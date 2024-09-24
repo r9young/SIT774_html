@@ -25,19 +25,17 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
-                            <th scope="row" style="width: 20%;">Firstname</th>
-                            <td style="width: 80%;"><%= firstname %></td> 
+                            <th>first name</th>
+                            <th>sure name</th>
                         </tr>
-                        <tr>
-                            <th scope="row" style="width: 20%;">Surename</th>
-                            <td style="width: 80%;"><%= surename %></td>
-                        </tr>
+                        <% rows.forEach(function(row) { %>
+                            <tr>
+                                <td style="width: 80%;"><%= row.firstname %></td>
+                                <td style="width: 80%;"><%= row.surename %></td>
+                            </tr>
+                        <% }); %>
                     </tbody>
                 </table>
-                <div class="mt-2">
-                    <a href="/" class="">Click here to return to the feedback form</a>
-                </div>
-                
             </div>
         </div>
     </main>
