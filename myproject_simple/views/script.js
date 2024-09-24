@@ -23,9 +23,11 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        // Parse the JSON response from the server
-        // const result = await response.json();
-        // console.log(result); // Use the parsed JSON data
+        if (response.redirected) {
+            // Redirect to the thankyou page
+            window.location.href = response.url;
+        }
+
 
     } catch (error) {
         console.error('Error:', error); // Handle any errors that occur

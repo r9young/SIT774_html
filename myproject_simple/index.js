@@ -48,6 +48,8 @@ const postData = (req, res) => {
     // res (short for "response") is used to send a response back to the client.
     const { firstname, surename } = req.body;
 
+    console.log(firstname)
+
     if (!firstname || !surename) {
         return res.status(400).json({ message: 'Missing required fields' });
     }
@@ -62,16 +64,20 @@ const postData = (req, res) => {
             return res.status(400).json({ error: err.message });
         } else {
             console.log("Rendering thankyou.ejs");  
-            res.render('thankyou', { title: 'Thank You', firstname, surename});
+            console.log(firstname, surename);
+            res.redirect(`/thankyou?firstname=${encodeURIComponent(firstname)}&surename=${encodeURIComponent(surename)}`);
         }
-       
-    });
 
-    
+    });
 }
 
 // ----------------------------------------------------------------
 
+app.get('/thankyou', (req, res) => {
+    // Get the form data from query parameters
+    const { firstname, surename } = req.query;
+    res.render('thankyou', { title: 'Thank You', firstname, surename});
+});
 
 app.get('/feedback', (req, res) => {
     getData(res);
