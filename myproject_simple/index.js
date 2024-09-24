@@ -12,8 +12,6 @@ app.set('view engine', 'ejs');
 // app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-
 app.get('/', function(req, res) {
     res.render('index', { title: 'Home Page'});
 });
@@ -66,19 +64,24 @@ const postData = (req, res) => {
         } else {
             console.log("Rendering thankyou.ejs");  
             console.log(firstname, surename);
+            // redirect to the thankyou page with the encoded firstname and surename parameters. 
             res.redirect(`/thankyou?firstname=${encodeURIComponent(firstname)}&surename=${encodeURIComponent(surename)}`);
         }
 
     });
 }
 
-// ----------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 
 app.get('/thankyou', (req, res) => {
     // Get the form data from query parameters
     const { id, firstname, surename } = req.query;
     res.render('thankyou', { title: 'Thank You', id, firstname, surename});
 });
+
+
+//--------------------------------------------------------------------------------------------------
+
 
 app.get('/feedback', (req, res) => {
     getData(res);
@@ -87,28 +90,19 @@ app.get('/feedback', (req, res) => {
 
 // Function to fetch data from the 'users' table
 const getData = (res) => {
-    const sql = `SELECT id, firstname, surename FROM users`; // Query for firstname and surname from 'users' table
+    const sql = `SELECT firstname, surename FROM users`; // Query for firstname and surname from 'users' table
 
     db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;
         }
-
         // Loop through the rows and log the data
         rows.forEach((row) => {
-            console.log(`id: ${row.id},Firstname: ${row.firstname}, Surname: ${row.surename}`);
+            console.log(`ID: ${row.id}, Firstname: ${row.firstname}, Surname: ${row.surename}`);
             res.render('submit', { title: 'Thank You', rows: rows });
-
         });
     });
 };
-
-
-// ----------------------------------------------------------------
-
-
-
-
 
 app.listen(4000);
 console.log('Server is listening on port 4000');

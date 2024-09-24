@@ -35,22 +35,17 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
 });
 
 
-document.getElementById('getfeedbackBtn').addEventListener('click', async function(e) {
+document.getElementById('getfeedbackBtn').addEventListener('submit', async function(e) {
     e.preventDefault();
-
-    console.log("you have clicked")
 
     try {
         // Send data to the server
         const get = await fetch('http://localhost:4000/feedback', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify({ firstname, surename }) // Convert to JSON string
-            // This is converting the firstname and surename variables (assumed to be retrieved from your form or inputs) into a JSON string.
+            body: JSON.stringify({ id, firstname, surename }) // Convert to JSON string
         });
     } catch (error) {
         console.error('Error:', error); // Handle any errors that occur
     }
-
-
 })
