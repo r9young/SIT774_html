@@ -30,6 +30,7 @@ const db = new sqlite3.Database('./database.sqlite', (err) => {
         console.error('Error opening database:', err.message);
     } else {
         db.run(`CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
             firstname TEXT, 
             surename TEXT
         )`);
@@ -75,8 +76,8 @@ const postData = (req, res) => {
 
 app.get('/thankyou', (req, res) => {
     // Get the form data from query parameters
-    const { firstname, surename } = req.query;
-    res.render('thankyou', { title: 'Thank You', firstname, surename});
+    const { id, firstname, surename } = req.query;
+    res.render('thankyou', { title: 'Thank You', id, firstname, surename});
 });
 
 app.get('/feedback', (req, res) => {
@@ -86,7 +87,7 @@ app.get('/feedback', (req, res) => {
 
 // Function to fetch data from the 'users' table
 const getData = (res) => {
-    const sql = `SELECT firstname, surename FROM users`; // Query for firstname and surname from 'users' table
+    const sql = `SELECT id, firstname, surename FROM users`; // Query for firstname and surname from 'users' table
 
     db.all(sql, [], (err, rows) => {
         if (err) {
@@ -95,9 +96,7 @@ const getData = (res) => {
 
         // Loop through the rows and log the data
         rows.forEach((row) => {
-           
-            console.log(`Firstname: ${row.firstname}, Surname: ${row.surename}`);
-
+            console.log(`id: ${row.id},Firstname: ${row.firstname}, Surname: ${row.surename}`);
             res.render('submit', { title: 'Thank You', rows: rows });
 
         });

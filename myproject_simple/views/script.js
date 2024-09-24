@@ -35,8 +35,10 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
 });
 
 
-document.getElementById('getfeedbackBtn').addEventListener('submit', async function(e) {
+document.getElementById('getfeedbackBtn').addEventListener('click', async function(e) {
     e.preventDefault();
+
+    console.log("you have clicked")
 
     try {
         // Send data to the server
@@ -44,6 +46,7 @@ document.getElementById('getfeedbackBtn').addEventListener('submit', async funct
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, 
             body: JSON.stringify({ firstname, surename }) // Convert to JSON string
+            // This is converting the firstname and surename variables (assumed to be retrieved from your form or inputs) into a JSON string.
         });
     } catch (error) {
         console.error('Error:', error); // Handle any errors that occur
@@ -51,7 +54,3 @@ document.getElementById('getfeedbackBtn').addEventListener('submit', async funct
 
 
 })
-
-
-
-

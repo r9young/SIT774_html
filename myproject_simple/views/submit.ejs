@@ -25,13 +25,15 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
+                            <th>ID</th>
                             <th>first name</th>
                             <th>sure name</th>
                         </tr>
                         <% rows.forEach(function(row) { %>
-                            <tr>
-                                <td style="width: 80%;"><%= row.firstname %></td>
-                                <td style="width: 80%;"><%= row.surename %></td>
+                            <tr class="mx-auto">
+                                <td style="width: 33.33%;"><%= row.id %></td>
+                                <td style="width: 33.33%;"><%= row.firstname %></td>
+                                <td style="width: 33.33%;"><%= row.surename %></td>
                             </tr>
                         <% }); %>
                     </tbody>
