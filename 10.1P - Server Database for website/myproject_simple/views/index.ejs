@@ -40,7 +40,7 @@
                     <div class="row mb-3">
                         <label for="inputSurname" class="col-sm-2 pt-2 col-form-label-sm text-sm-end">Surname:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputSurname" name="surname" >
+                            <input type="text" class="form-control" id="inputSurname" name="surename" >
                         </div>
                     </div>
 
@@ -49,7 +49,7 @@
                             Mobile:
                         </label>
                         <div class="col-sm-10">
-                            <input type="tel" class="form-control" id="inputMobile" name="mobileNumber"
+                            <input type="tel" class="form-control" id="inputMobile" name="mobile"
                                 placeholder="04xxxxxxxx" title="Invalid Number 04xxxxxxxx" pattern="[0-9]{10}" >
                         </div>
                     </div>
@@ -63,7 +63,6 @@
                             <input type="text" class="form-control" id="inputEmail" name="email" >
                         </div>
                     </div>
-
 
                     <div class="row mb-3">
                         <legend for="inputNumCaps" class="col-sm-2 pt-2 col-form-label-sm text-sm-end" name="inputNumCaps">
@@ -93,12 +92,30 @@
                                 <label class="form-check-label" for="inlineCheckbox4">More than 30 caps</label>
                             </div>
                         </div>
-                    
+                    </div>
 
-              
+                    <div class="row mb-3">
+                        <legend class="col-form-label-sm col-sm-2 pt-0 text-sm-end" for="capstyles" name="capstyles">Favourite Cap(s):</legend>
+                        <div class="col-sm-10">
+                            <select class="form-select" id="capstyles" name="capstyles" aria-label="Select a cap style">
+                                <option disabled selected>Select a cap style...</option>
+                                <option value="Snapback Cap">Snapback Cap</option>
+                                <option value="Trucker Cap">Trucker Cap</option>
+                                <option value="Bucket Hat">Bucket Hat</option>
+                                <option value="Beanie">Beanie</option>
+                                <option value="Beret Cap">Beret Cap</option>
+                                <option value="Runners Cap">Runners Cap</option>
+                            </select>
+                        </div>
+                    </div>
 
-
-                
+                    <div class="row mb-2"></div>
+                        <label class="col-sm-2 col-form-label-sm text-sm-end" for="comments">Comments:</label>
+                        <div class="col-sm-10">
+                            <textarea rows="3" class="form-control" id="comments" name="comments"
+                                placeholder="Please provide a few words to describe your favourite cap..." ></textarea>
+                        </div>
+                    </div>
 
                     <div class="row mt-4">
                         <div class="col-sm mx-auto d-flex justify-content-center ">
@@ -111,15 +128,15 @@
                 </form>
 
                 <h5 class="mt-4">List Feedback</h5>
-                <p>
-                The following button will issue a <code>GET</code> request to the <code>/feedback</code>
-                route to retrieve feedback stored in the DB.
-                </p>
+                    <p>
+                    The following button will issue a <code>GET</code> request to the <code>/feedback</code>
+                    route to retrieve feedback stored in the DB.
+                    </p>
                 <div class="d-grid gap-5d-md-flex justify-content-md-center mb-4">
                 <a href="/membershipdetails">
-                <button class="btn btn btn-success" id="getfeedbackBtn" type="submit" >
-                    Retrieve Membership Details From Database
-                </button>
+                    <button class="btn btn btn-success" id="getfeedbackBtn" type="submit" >
+                        Retrieve Membership Details From Database
+                    </button>
                 </a>
             </div>
         </div>

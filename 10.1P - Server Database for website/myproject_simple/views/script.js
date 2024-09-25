@@ -4,11 +4,13 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
     // Get form data
     const firstname = document.getElementById('inputFirstname').value;
     const surename = document.getElementById('inputSurname').value;
-    const moible = document.getElementById('inputMobile').value;
+    const mobile = document.getElementById('inputMobile').value;
     const email = document.getElementById('inputEmail').value;
     const capsOwned = document.querySelector('input[name="inputNumCaps"]:checked')?.value; 
+    const capstyles = document.querySelector('input[name="capstyles"]:checked')?.value; 
+    const comments = document.getElementById('comments').value;
 
-    if (!firstname || !surename) {
+    if (!firstname || !surename || !mobile || !email || !capsOwned || !capstyles || !comments) {
         alert('Please fill in all required fields.');
         return; // Stops the execution of the code, so the fetch request won't run
     }
@@ -18,7 +20,7 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
         const response = await fetch('http://localhost:4000/submitmembership', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify({ firstname, surename, moible,email, capsOwned }) // Convert to JSON string
+            body: JSON.stringify({ firstname, surename, mobile ,email, capsOwned, capstyles, comments }) // Convert to JSON string
         });
 
         // Handle the server response
@@ -38,17 +40,7 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
 });
 
 
-document.getElementById('getfeedbackBtn').addEventListener('submit', async function(e) {
+document.getElementById('getfeedbackBtn').addEventListener('click', function(e) {
     e.preventDefault();
-
-    try {
-        // Send data to the server
-        const get = await fetch('http://localhost:4000/membershipdetails', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify({ id, firstname, surename, moible, capsOwned }) // Convert to JSON string
-        });
-    } catch (error) {
-        console.error('Error:', error); // Handle any errors that occur
-    }
-})
+    window.location.href = 'http://localhost:4000/membershipdetails';
+});

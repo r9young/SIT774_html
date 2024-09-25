@@ -32,7 +32,11 @@ const db = new sqlite3.Database('./database.sqlite', (err) => {
             firstname TEXT, 
             surename TEXT,
             moible TEXT, 
-            capsOwned TEXT
+            email TEXT, 
+            capsOwned TEXT,
+            capstyles TEXT,
+            comments TEXT
+
         )`);
     }
 }); 
@@ -47,17 +51,17 @@ app.post('/submitmembership', (req, res) => {
 const postData = (req, res) => {
     // req (short for "request") is used to access the data sent by the client
     // res (short for "response") is used to send a response back to the client.
-    const { firstname, surename, mobile, capsOwned  } = req.body;
+    const { firstname, surename, mobile, email, capsOwned, capstyles, comments  } = req.body;
 
 
-    if (!firstname || !surename || !mobile || !capsOwned) {
+    if (!firstname || !surename || !mobile || !email || !capsOwned || !capstyles || comments) {
         return res.status(400).json({ message: 'Missing required fields' });
     }
 
-    const sql = 'INSERT INTO users (firstname, surename, mobile, capsOwned) VALUES (?, ?, ?, ?)'; 
+    const sql = 'INSERT INTO users (firstname, surename, mobile,email, capsOwned, comments) VALUES (?, ?, ?, ?, ?, ?)'; 
     // the line of code you provided only defines the SQL query as a string. It does not actually execute the query. 
 
-    db.run(sql, [firstname, surename, mobile, capsOwned], function (err) {
+    db.run(sql, [firstname, surename, mobile, email, capsOwned, capstyles, comments], function (err) {
     // db.run(sql, [firstname, surename], function (err) { ... }): Executes the SQL query with the provided values
     // function (err) {...} is a callback function. 
         if (err) {
@@ -66,7 +70,7 @@ const postData = (req, res) => {
             console.log("Rendering thankyou.ejs");  
 
             // redirect to the thankyou page with the encoded firstname and surename parameters. 
-            res.redirect(`/thankyou?firstname=${encodeURIComponent(firstname)}&surename=${encodeURIComponent(surename)}&mobile=${encodeURIComponent(mobile)}&capsOwned=${encodeURIComponent(capsOwned)}`);
+            res.redirect(`/thankyou?firstname=${encodeURIComponent(firstname)}&surename=${encodeURIComponent(surename)}&mobile=${encodeURIComponent(mobile)}&email=${encodeURIComponent(ee)}&capsOwned=${encodeURIComponent(capsOwned)}&capstyles=${encodeURIComponent(capstyles)}&comments=${encodeURIComponent(comments)}`);
         }
 
     });
@@ -76,8 +80,8 @@ const postData = (req, res) => {
 
 app.get('/thankyou', (req, res) => {
     // Get the form data from query parameters
-    const { id, firstname, surename, mobile, capsOwned } = req.query;
-    res.render('thankyou', { title: 'Thank You', id, firstname, surename, moible, capsOwned});
+    const { id, firstname, surename, mobile, email, capsOwned, capstyles, comments } = req.query;
+    res.render('thankyou', { title: 'Thank You', id, firstname, surename, mobile, email, capsOwned, capstyles, comments});
 });
 
 
@@ -91,19 +95,13 @@ app.get('/membershipdetails', (req, res) => {
 
 // Function to fetch data from the 'users' table
 const getData = (res) => {
-    const sql = `SELECT id, firstname, surename, moible, capsOwned FROM users`; // Query for firstname and surname from 'users' table
+    const sql = `SELECT id, firstname, surename, mobile, email, capsOwned, capstyles, comments FROM users`; // Query for firstname and surname from 'users' table
 
     db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;
         }
 
-        // Log data to console (optional, for debugging)
-        // rows.forEach((row) => {
-        //     console.log(`ID: ${row.id}, Firstname: ${row.firstname}, Surname: ${row.surename}`);
-        // });
-
-        // Render the 'submit' view after fetching data
         res.render('submit', { title: 'Thank You', rows: rows });
     });
 };
