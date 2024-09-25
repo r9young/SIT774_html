@@ -260,3 +260,67 @@ Potential Issues:
 </a>
 
 ```
+
+Bug Fixed: After change <a href="/feedback"> to <a href="/membershipdetails">
+commit 3e3835fd26d2057c1c6a6dd16c749adb0d7cb3d2
+
+
+-------------------------------------------------------------------------------
+
+Question: But I have a question of above question. I have my javascript and node.js. Why the page still go to /feedback. but with a users's record, the page goes to /membershipdetails. 
+
+Anwswer: pending
+
+
+-------------------------------------------------------------------------------
+
+
+Bug:
+
+ 
+node.js
+
+```javascript
+
+
+db.all(sql, [], (err, rows) => {
+    if (err) {
+        throw err;
+    }
+    // Loop through the rows and log the data
+    rows.forEach((row) => {
+        console.log(`ID: ${row.id}, Firstname: ${row.firstname}, Surname: ${row.surename}`);
+        res.render('submit', { title: 'Thank You', rows: rows });
+    });
+});
+
+```
+
+
+Bug Fixed:
+
+
+
+Moving theres.render('submit', { title: 'Thank You', rows: rows }); out of foreach loop.
+
+
+using rows.forEach to iterate over the rows, but inside the loop, you're logging the row.id, even though you're not selecting id in your SQL query. This will result in an undefined row.id.
+
+```javascript
+
+db.all(sql, [], (err, rows) => {
+    if (err) {
+        throw err;
+    }
+
+    // Log data to console (optional, for debugging)
+    rows.forEach((row) => {
+        console.log(`ID: ${row.id}, Firstname: ${row.firstname}, Surname: ${row.surename}`);
+    });
+
+    // Render the 'submit' view after fetching data
+    res.render('submit', { title: 'Thank You', rows: rows });
+});
+
+```
+

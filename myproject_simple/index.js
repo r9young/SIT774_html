@@ -80,7 +80,7 @@ app.get('/thankyou', (req, res) => {
 });
 
 
-//--------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 
 app.get('/membershipdetails', (req, res) => {
@@ -90,26 +90,22 @@ app.get('/membershipdetails', (req, res) => {
 
 // Function to fetch data from the 'users' table
 const getData = (res) => {
-    const sql = `SELECT firstname, surename FROM users`; // Query for firstname and surname from 'users' table
+    const sql = `SELECT id, firstname, surename FROM users`; // Query for firstname and surname from 'users' table
 
     db.all(sql, [], (err, rows) => {
         if (err) {
             throw err;
         }
-        if (rows.length === 0) { // If no records are found, send a message to the client
-            res.send('No records found in the database.');
-        } else {
-            // Loop through the rows and log the data
-            rows.forEach((row) => {
-                console.log(`ID: ${row.id}, Firstname: ${row.firstname}, Surname: ${row.surename}`);
-            });
-            res.render('submit', { title: 'Thank You', rows: rows });
-        }
+
+        // Log data to console (optional, for debugging)
+        rows.forEach((row) => {
+            console.log(`ID: ${row.id}, Firstname: ${row.firstname}, Surname: ${row.surename}`);
+        });
+
+        // Render the 'submit' view after fetching data
+        res.render('submit', { title: 'Thank You', rows: rows });
     });
 };
 
 app.listen(4000);
 console.log('Server is listening on port 4000');
-
-
-// ----------------------------------------------------------------

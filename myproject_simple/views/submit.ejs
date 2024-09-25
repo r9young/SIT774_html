@@ -29,18 +29,24 @@
                             <th>first name</th>
                             <th>sure name</th>
                         </tr>
-                        
-                        <tr class="mx-auto"></tr>
-                            <td style="width: 100%;" colspan="3" >List is Empty</td>
-                        </tr>
 
-                        <% rows.forEach(function(row) { %>
-                            <tr class="mx-auto">
-                                <!-- <td style="width: 33.33%;"><%= row.id %></td> -->
-                                <td style="width: 33.33%;"><%= row.firstname %></td>
-                                <td style="width: 33.33%;"><%= row.surename %></td>
+                        <% if (rows.length === 0) { %>
+                        
+                            <tr class="mx-auto"></tr>
+                                <td style="width: 100%;" colspan="3" >List is Empty</td>
                             </tr>
-                        <% }); %>
+
+                        <% } else { %>
+
+                            <% rows.forEach(function(row) { %>
+                                <tr class="mx-auto">
+                                    <td style="width: 33.33%;"><%= row.id %></td>
+                                    <td style="width: 33.33%;"><%= row.firstname %></td>
+                                    <td style="width: 33.33%;"><%= row.surename %></td>
+                                </tr>
+                            <% }); %>
+
+                        <% } %>
                     </tbody>
                 </table>
             </div>
