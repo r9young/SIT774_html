@@ -80,10 +80,10 @@ app.get('/thankyou', (req, res) => {
 });
 
 
-//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 
 
-app.get('/feedback', (req, res) => {
+app.get('/membershipdetails', (req, res) => {
     getData(res);
     // res.send('Data fetched and logged to console');
 });
@@ -96,13 +96,20 @@ const getData = (res) => {
         if (err) {
             throw err;
         }
-        // Loop through the rows and log the data
-        rows.forEach((row) => {
-            console.log(`ID: ${row.id}, Firstname: ${row.firstname}, Surname: ${row.surename}`);
+        if (rows.length === 0) { // If no records are found, send a message to the client
+            res.send('No records found in the database.');
+        } else {
+            // Loop through the rows and log the data
+            rows.forEach((row) => {
+                console.log(`ID: ${row.id}, Firstname: ${row.firstname}, Surname: ${row.surename}`);
+            });
             res.render('submit', { title: 'Thank You', rows: rows });
-        });
+        }
     });
 };
 
 app.listen(4000);
 console.log('Server is listening on port 4000');
+
+
+// ----------------------------------------------------------------

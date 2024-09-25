@@ -198,3 +198,65 @@ With these changes:
 The getData function fetches all rows from the database and passes them to the thankyou template.
 The thankyou.ejs template iterates over the rows array and creates a table row for each entry.
 This should resolve the error and correctly render the data in your EJS template.
+
+
+----------------------------------------------------------------
+
+25/09/2024 
+
+Goal: Adding "List is Empty" in localhost:3000/membershipdetails, when there is no memberships in the database. 
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Debug: When I click on "Retrieve Memberships Details from Database"
+
+script.js:52 Error: ReferenceError: firstname is not defined
+    at HTMLButtonElement.<anonymous> (script.js:48:36)
+
+
+Fixed: it is just a code type issue. 
+commit 53456af72b7bf536d263b03bb26edd89ab182c15
+
+
+----------------------------------------------------------------
+
+Bug: I updated the code below, but retrieved button go to localhost:3000/feedback
+I am trying to figure out why it is going to feedback
+
+
+```javascript
+
+const getData = (res) => {
+    const sql = `SELECT firstname, surename FROM users`; // Query for firstname and surname from 'users' table
+
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            throw err;
+        }
+        if (rows.length === 0) { // If no records are found, send a message to the client
+            res.send('No records found in the database.');
+        } else {
+            // Loop through the rows and log the data
+            rows.forEach((row) => {
+                console.log(`ID: ${row.id}, Firstname: ${row.firstname}, Surname: ${row.surename}`);
+            });
+            res.render('submit', { title: 'Thank You', rows: rows });
+        }
+    });
+};
+
+```
+
+
+Potential Issues:
+
+
+```html
+
+<a href="/feedback">
+  <button class="btn btn btn-success" id="getfeedbackBtn" type="submit" >
+      Retrieve Membership Details From Database
+  </button>
+</a>
+
+```

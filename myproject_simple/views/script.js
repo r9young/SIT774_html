@@ -40,7 +40,7 @@ document.getElementById('getfeedbackBtn').addEventListener('submit', async funct
 
     try {
         // Send data to the server
-        const get = await fetch('http://localhost:4000/feedback', {
+        const get = await fetch('http://localhost:4000/membershipdetails', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }, 
             body: JSON.stringify({ id, firstname, surename }) // Convert to JSON string
