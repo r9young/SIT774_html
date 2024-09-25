@@ -324,3 +324,106 @@ db.all(sql, [], (err, rows) => {
 
 ```
 
+
+-----------------------------------------
+
+# Adding other element into the webpage
+
+bug: 
+
+Question 1: some of element on my webpage have id but some of them don't 
+e.g mobile we have an id="inputMobile" but for  Number of caps owned, there is no id. 
+
+so we extract the value of fistname and surename by using getElement. how about Number of caps owned, how could we get value?
+
+script.js
+
+```javascript
+
+document.getElementById('postMembershipForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Get form data
+    const firstname = document.getElementById('inputFirstname').value;
+    const surename = document.getElementById('inputSurname').value;
+
+    if (!firstname || !surename) {
+        alert('Please fill in all required fields.');
+        return; // Stops the execution of the code, so the fetch request won't run
+    }
+
+    try {
+        // Send data to the server
+        const response = await fetch('http://localhost:4000/submitmembership', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({ firstname, surename }) // Convert to JSON string
+        });
+
+        // Handle the server response
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        if (response.redirected) {
+            // Redirect to the thankyou page
+            window.location.href = response.url;
+        }
+
+
+    } catch (error) {
+        console.error('Error:', error); // Handle any errors that occur
+    }
+});
+
+
+```
+
+
+```javascript
+
+
+ <div class="row mb-3">
+    <label for="inputMobile" class="col-sm-2 pt-2 col-form-label-sm text-sm-end">
+        Mobile:
+    </label>
+    <div class="col-sm-10">
+        <input type="tel" class="form-control" id="inputMobile" name="mobileNumber"
+            placeholder="04xxxxxxxx" title="Invalid Number 04xxxxxxxx" pattern="[0-9]{10}" >
+    </div>
+</div>
+
+<div class="row mb-3">
+    <legend for="inputNumCaps" class="col-sm-2 pt-2 col-form-label-sm text-sm-end" name="inputNumCaps">
+        Number of caps owned:
+    </legend>
+    <div class="col-sm-10 pt-2">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineCheckbox1" name="inputNumCaps"
+                value="0 caps">
+            <label class="form-check-label" for="inlineCheckbox1">No caps yet</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineCheckbox2" name="inputNumCaps"
+                value="1 - 10 caps">
+            <label class="form-check-label" for="inlineCheckbox2">Between 1 and 10
+                caps</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineCheckbox3" name="inputNumCaps"
+                value="11 - 29 caps">
+            <label class="form-check-label" for="inlineCheckbox3">Between 11 and 29
+                caps</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="inlineCheckbox4" name="inputNumCaps"
+                value="30+ caps">
+            <label class="form-check-label" for="inlineCheckbox4">More than 30 caps</label>
+        </div>
+    </div>
+</div>
+
+```
+
+
+
