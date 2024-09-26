@@ -29,6 +29,26 @@
                     <% if (!surename) { %> <!-- If surename is not filled, show the row -->
                     <li scope="row">Error in field 'surename': <em>Missing surename?</em></li>
                     <% } %>
+
+                    <% if (!mobileNumber) { %> <!-- If surename is not filled, show the row -->
+                        <li scope="row">Error in field 'mobile number': <em>Missing or invalid mobile?</em></li>
+                    <% } %>
+
+                    <% if (!email) { %> <!-- If surename is not filled, show the row -->
+                    <li scope="row">Error in field 'email': <em>Missing or invalid email?</em></li>
+                    <% } %>
+
+                    <% if (!capstyles) { %> <!-- If surename is not filled, show the row -->
+                        <li scope="row">Error in field 'numcaps': <em>Number of caps incorrect?</em></li>
+                    <% } %>
+
+                    <% if (!capstyles) { %> <!-- If surename is not filled, show the row -->
+                        <li scope="row">Error in field 'capstyle': <em>Capstyle incorrect?</em></li>
+                    <% } %>
+
+                    <% if (!comments) { %> <!-- If surename is not filled, show the row -->
+                    <li scope="row">Error in field 'comments': <em>Missing comments?</em></li>
+                    <% } %>
                 </ol> 
                 <a href="/" class="">Click here to return to the feedback form</a>
             </div>
