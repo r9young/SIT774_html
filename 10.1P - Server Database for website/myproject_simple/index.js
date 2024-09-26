@@ -46,10 +46,10 @@ const db = new sqlite3.Database('./database.sqlite', (err) => {
 
 // ----------------------------------------------------------------
 
-// app.post('/savedata', (req, res) => {
-//     postData(req, res);
-//     // res.send('User saved');
-// });
+app.post('/savedata', (req, res) => {
+    postData(req, res);
+    // res.send('User saved');
+});
 
 // const postData = (req, res) => {
 //     // req (short for "request") is used to access the data sent by the client
@@ -74,55 +74,55 @@ const db = new sqlite3.Database('./database.sqlite', (err) => {
 //     });
 // }
 
-// ------------------------------------------------------------------------------------------------
-// Create the confirmation page
+// // ------------------------------------------------------------------------------------------------
+// // Create the confirmation page
 
-// app.get('/thankyou', (req, res) => {
-//     // Get the form data from query parameters
-//     const { id, firstname, surename, mobile, email, capsOwned, capstyles, comments } = req.query;
-//     res.render('thankyou', { title: 'Thank You', id, firstname, surename, mobile, email, capsOwned, capstyles, comments});
-// });
+// // app.get('/thankyou', (req, res) => {
+// //     // Get the form data from query parameters
+// //     const { id, firstname, surename, mobile, email, capsOwned, capstyles, comments } = req.query;
+// //     res.render('thankyou', { title: 'Thank You', id, firstname, surename, mobile, email, capsOwned, capstyles, comments});
+// // });
 
 
 app.post('/submitmembership', function(req, res) {
-    // const firstname = req.body.firstname; // Extract firstname from the POST request
-    // const surename = req.body.surename;   // Extract surename from the POST request
-    // const email = req.body.email; 
-    // const mobile = req.body.mobileNumber;    
-    // const numcaps = req.body.inputNumCaps
-    // const capstyle = req.body.capstyles
-    // const comments = req.body.comments
-
-
-    // const { firstname, surename, email, mobileNumber:mobile, inputNumCaps:numcaps, capstyle, comments } = req.body;
 
     const { firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments  } = req.body;
 
+    //-----------------------------------------
+
+    console.log(firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments )
     
-    
-    // check if all fields are filled
-    const array = [firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments];
+    //db 
 
-    // console.log(array);
-    // console.log (array)
-
-    let count = 0;
-    array.forEach((element) => {
-        if (element == "" || element == null) {
-            // count increase 1;
-            count++;
-        }
-    });
-
-    // console.log(count)
-
-    //bug: capstyle is not correctly getting checked. It should be 'uppercase' or 'lowercase'
-
-    if (!firstname || !surename || !email || !  mobileNumber  || !inputNumCaps || !capstyles  || !comments  ) {
-        res.render('alert', { title: 'Thank You', firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments});
-    } else {
-        res.render('thankyou', { title: 'Thank You', firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments}); // Pass firstname
+    if (!firstname || !surename || !mobileNumber || !email || !inputNumCaps || !capstyles || !comments) {
+        return res.status(400).json({ message: 'Missing required fields' });
     }
+
+    const sql = 'INSERT INTO users (firstname, surename, moible, email, capsOwned,capstyles, comments) VALUES (?, ?, ?, ?, ?, ?,?)'; 
+    //  (firstname, surename, moible,email, capsOwned,capstyles, comments) is the column name on the database
+
+    db.run(sql, [firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments], function (err) {
+        if (err) {
+            return res.status(400).json({ error: err.message });
+        } 
+
+        const array = [firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments];
+        let count = 0;
+        
+        array.forEach((element) => {
+            if (element === "" || element === null) {
+                count++;
+            }
+        });
+
+        // if (!firstname || !surename || !email || !  mobileNumber  || !inputNumCaps || !capstyles  || !comments  ) {
+        if (count > 0) {
+            return res.render('alert', { title: 'Thank You', firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments});
+        } else {
+            return res.render('thankyou', { title: 'Thank You', firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments}); // Pass firstname
+        }
+
+    });
     
 });
 

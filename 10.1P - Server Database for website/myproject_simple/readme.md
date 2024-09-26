@@ -76,7 +76,7 @@ Problems is:  async/await or .then() cannot be used at the same time.
 fixed
 
 
---------------------------------------------------------------------
+-----------------------------
 
 
 next step: we will add membershipdetails page, we will use thankyou.ejs as a reference. 
@@ -425,9 +425,11 @@ document.getElementById('postMembershipForm').addEventListener('submit', async f
 
 ```
 
------------------------------------------------------------------------
+--------------------
 
-Bug: I found that code in script.js and index.js are duplicating tasks:
+
+
+Bug: found that code in script.js and index.js are duplicating tasks:
 
 Below are the analysis from GPT:
 
@@ -462,4 +464,37 @@ If you're aiming for efficiency and simplicity, removing unnecessary checks or e
 ----------------------------
 
 
+bug: Reference Error
 
+```
+
+ReferenceError: /Users/r9young/Library/Mobile Documents/com~apple~CloudDocs/Coding/html - SIT774/10.1P - Server Database for website/myproject_simple/views/thankyou.ejs:41
+    39|                         <tr>
+    40|                             <th scope="row" style="width: 20%;">Mobile</th>
+ >> 41|                             <td style="width: 80%;"><%= mobile %></td>
+    42|                         </tr>
+    43|                         <tr>
+    44|                             <th scope="row" style="width: 20%;">Cap Style</th>
+
+```
+
+
+Fixed: Reference Error
+commit db71b339e654a789272e6d71ac85bb73082f2065
+
+The name of the elements extracted from `req.body` should exactly match the names defined in your form on `index.ejs`. If you want to change the name of a variable, you'll need to use the aliasing approach, like `inputNumCaps: numcaps`, as you've mentioned. Then, when rendering the `res.render` function, you need to ensure that you're using the variable names consistently.
+
+Here’s an example of how to apply the changes while keeping everything consistent between `req.body`, the extracted variables, and the `res.render` function:
+
+1. **Ensure form field names (in `index.ejs`) match what you expect to extract from `req.body`.**
+2. **If you alias a variable (e.g., `inputNumCaps: numcaps`), use the aliased name (`numcaps`) in `res.render`.**
+
+
+### Important notes:
+1. **Form names in `index.ejs`**: Make sure the names in your form (in `index.ejs`) are consistent with what you expect to extract from `req.body`. For example, if your form has `<input name="inputNumCaps">`, you should extract it as `inputNumCaps`, and alias it to `numcaps` if you want.
+   
+2. **Aliasing variables**: When you alias `mobileNumber` as `mobile`, you should use `mobile` in the rest of the code, including in `res.render`.
+
+3. **Consistency in `res.render`**: Ensure that the names passed in `res.render` match the aliased variable names. For example, if you alias `mobileNumber` as `mobile`, you should pass `mobile` to the template, not `mobileNumber`.
+
+This approach should resolve any issues related to variable names not matching between your form, the server code, and the rendering in the views.
