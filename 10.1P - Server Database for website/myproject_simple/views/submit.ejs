@@ -22,45 +22,49 @@
             <h5>Membership details</h5>
 
             <div>
-                <table class="table table-bordered">
+                <table class="table">
                     <tbody>
                         <tr>
-                            <th>id</th>
-                            <th>first name</th>
-                            <th>sure name</th>
-                            <th>mobile</th>
-                            <th>email</th>
-                            <th>capsOwned</th>
-                            <th>capstyles</th>
-                            <th>comments</th>
+                            <th class="col-1 border-bottom">ID</th>
+                            <th class="col-1 border-bottom">First Name</th>
+                            <th class="col-1 border-bottom">Surname</th>
+                            <th class="col-2 border-bottom">Email</th>
+                            <th class="col-1 border-bottom">Mobile#</th>
+                            <th class="col-2 border-bottom">Caps Owned</th>
+                            <th class="col-1 border-bottom">Cap Styles</th>
+                            <th class="col-4 border-bottom">Comments</th>
 
                         </tr>
 
                         <% if (rows.length === 0) { %>
                         
                             <tr class="mx-auto"></tr>
-                                <td style="width: 100%;" colspan="3" >List is Empty</td>
+                                <td style="width: 100%;" colspan="12" >List is Empty</td>
                             </tr>
 
                         <% } else { %>
 
                             <% rows.forEach(function(row) { %>
                                 <tr class="mx-auto">
-                                    <td style="width: 33.33%;"><%= row.id %></td>
-                                    <td style="width: 33.33%;"><%= row.firstname %></td>
-                                    <td style="width: 33.33%;"><%= row.surename %></td>
-                                    <td style="width: 33.33%;"><%= row.mobile %></td>
-                                    <td style="width: 33.33%;"><%= row.email %></td>
-                                    <td style="width: 33.33%;"><%= row.capsOwned %></td>
-                                    <td style="width: 33.33%;"><%= row.capstyles %></td>  
-                                    <td style="width: 33.33%;"><%= row.comments %></td>  
+                                    <td class-="border-bottom"><%= row.id %></td>
+                                    <td class-="border-bottom"><%= row.firstname %></td>
+                                    <td class-="border-bottom"><%= row.surename %></td>
+                                    <td class-="border-bottom"><%= row.email %></td>
+                                    <td class-="border-bottom"><%= row.mobile %></td>
+                                    <td class-="border-bottom"><%= row.capsOwned %></td>
+                                    <td class-="border-bottom"><%= row.capstyles %></td>  
+                                    <td class-="border-bottom"><%= row.comments %></td>  
                                 </tr>
                             <% }); %>
                         <% } %>
                     </tbody>
                 </table>
             </div>
+            <div class="mt-2">
+                <a href="/" class="">Click here to return to the feedback form</a>
+            </div>
         </div>
+        
     </main>
 
     <%- include('footer'); -%>
