@@ -20,9 +20,9 @@ app.get('/', function(req, res) {
 });
 
 // Route to serve the script.js file
-app.get('/script.js', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'script.js'));
-});
+// app.get('/script.js', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'views', 'script.js'));
+// });
 
 
 // Connect to SQLite database && create a new database if it doesn't exist
@@ -34,7 +34,7 @@ const db = new sqlite3.Database('./database.sqlite', (err) => {
             id INTEGER PRIMARY KEY AUTOINCREMENT, 
             firstname TEXT, 
             surename TEXT,
-            moible TEXT, 
+            mobile TEXT, 
             email TEXT, 
             capsOwned TEXT,
             capstyles TEXT,
@@ -51,39 +51,6 @@ app.post('/savedata', (req, res) => {
     // res.send('User saved');
 });
 
-// const postData = (req, res) => {
-//     // req (short for "request") is used to access the data sent by the client
-//     // res (short for "response") is used to send a response back to the client.
-//     const { firstname, surename, mobile, email, capsOwned, capstyles, comments  } = req.body;
-
-    
-
-
-//     if (!firstname || !surename || !mobile || !email || !capsOwned || !capstyles || comments) {
-//         return res.status(400).json({ message: 'Missing required fields' });
-//     }
-
-//     const sql = 'INSERT INTO users (firstname, surename, mobile,email, capsOwned, comments) VALUES (?, ?, ?, ?, ?, ?)'; 
-//     // the line of code you provided only defines the SQL query as a string. It does not actually execute the query. 
-
-//     db.run(sql, [firstname, surename, mobile, email, capsOwned, capstyles, comments], function (err) {
-//         if (err) {
-//             return res.status(400).json({ error: err.message });
-//         } 
-
-//     });
-// }
-
-// // ------------------------------------------------------------------------------------------------
-// // Create the confirmation page
-
-// // app.get('/thankyou', (req, res) => {
-// //     // Get the form data from query parameters
-// //     const { id, firstname, surename, mobile, email, capsOwned, capstyles, comments } = req.query;
-// //     res.render('thankyou', { title: 'Thank You', id, firstname, surename, mobile, email, capsOwned, capstyles, comments});
-// // });
-
-
 app.post('/submitmembership', function(req, res) {
 
     const { firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments  } = req.body;
@@ -98,8 +65,8 @@ app.post('/submitmembership', function(req, res) {
         return res.status(400).json({ message: 'Missing required fields' });
     }
 
-    const sql = 'INSERT INTO users (firstname, surename, moible, email, capsOwned,capstyles, comments) VALUES (?, ?, ?, ?, ?, ?,?)'; 
-    //  (firstname, surename, moible,email, capsOwned,capstyles, comments) is the column name on the database
+    const sql = 'INSERT INTO users (firstname, surename, mobile, email, capsOwned,capstyles, comments) VALUES (?, ?, ?, ?, ?, ?,?)'; 
+    //  (firstname, surename, mobile,email, capsOwned,capstyles, comments) is the column name on the database
 
     db.run(sql, [firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments], function (err) {
         if (err) {
@@ -130,18 +97,19 @@ app.post('/submitmembership', function(req, res) {
 //--------------------------------------------------------------------------------------------------
 
 
-app.get('/membershipdetails', (req, res) => {
+app.get('/feedback', (req, res) => {
     getData(res);
     // res.send('Data fetched and logged to console');
 });
 
 // Function to fetch data from the 'users' table
 const getData = (res) => {
-    const sql = `SELECT id, firstname, surename, mobile, email, capsOwned, capstyles, comments FROM users`; // Query for firstname and surname from 'users' table
+    const sql = `SELECT * FROM users`; // Query for firstname and surname from 'users' table
 
     db.all(sql, [], (err, rows) => {
         if (err) {
-            throw err;
+            console.error(err.message);
+            return res.status(500).send('An error occurred while fetching the data.');
         }
 
         res.render('submit', { title: 'Thank You', rows: rows });

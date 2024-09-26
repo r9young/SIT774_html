@@ -498,3 +498,94 @@ Here’s an example of how to apply the changes while keeping everything consist
 3. **Consistency in `res.render`**: Ensure that the names passed in `res.render` match the aliased variable names. For example, if you alias `mobileNumber` as `mobile`, you should pass `mobile` to the template, not `mobileNumber`.
 
 This approach should resolve any issues related to variable names not matching between your form, the server code, and the rendering in the views.
+
+
+
+-------------------------------
+
+
+bug: how can connect the button with endingpoing
+
+
+```html
+
+<h5 class="mt-4">List Feedback</h5>
+<p>
+The following button will issue a <code>GET</code> request to the <code>/feedback</code>
+route to retrieve feedback stored in the DB.
+</p>
+<div class="d-grid gap-5d-md-flex justify-content-md-center mb-4">
+<form action="/feedback" method="GET">
+<button class="btn btn btn-success" id="getfeedbackBtn" type="submit" >
+    Retrieve Membership Details From Database
+</button>
+
+```
+
+```js 
+
+
+app.get('/feedback', (req, res) => {
+    getData(res);
+    // res.send('Data fetched and logged to console');
+});
+
+// Function to fetch data from the 'users' table
+const getData = (res) => {
+    const sql = `SELECT id, 
+                firstname, 
+                surename, 
+                mobile, 
+                email, 
+                capsOwned,
+                capstyles, 
+                comments FROM users`; // Query for firstname and surname from 'users' table
+
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            
+            console.error(err.message);
+            return res.status(500).send('An error occurred while fetching the data.');
+        }
+
+        res.render('submit', { title: 'Thank You', rows: rows });
+    });
+};
+
+```
+
+
+
+Fixed:
+
+```js
+
+app.get('/feedback', (req, res) => {
+    getData(res);
+    // res.send('Data fetched and logged to console');
+});
+
+// Function to fetch data from the 'users' table
+const getData = (res) => {
+    const sql = `SELECT * FROM users`; // Query for firstname and surname from 'users' table
+
+    db.all(sql, [], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).send('An error occurred while fetching the data.');
+        }
+
+        res.render('submit', { title: 'Thank You', rows: rows });
+    });
+};
+
+```
+
+```html
+
+   <form action="/feedback" method="GET">
+        <button class="btn btn-success" id="getfeedbackBtn" type="submit">
+            Retrieve Membership Details From Database
+        </button>
+    </form>
+```
