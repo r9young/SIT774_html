@@ -55,44 +55,31 @@ app.post('/submitmembership', function(req, res) {
 
     const { firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments  } = req.body;
 
-    //-----------------------------------------
-
-   
+    const array = [firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments];
     
-    //db 
-
-    // if (!firstname || !surename || !mobileNumber || !email || !inputNumCaps || !capstyles || !comments) {
-    //     return res.status(400).json({ message: 'Missing required fields' });
-    // }
-
     const sql = 'INSERT INTO users (firstname, surename, mobile, email, capsOwned,capstyles, comments) VALUES (?, ?, ?, ?, ?, ?,?)'; 
-    //  (firstname, surename, mobile,email, capsOwned,capstyles, comments) is the column name on the database
 
-    db.run(sql, [firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments], function (err) {
-        if (err) {
-            return res.status(400).json({ error: err.message });
-        } 
+    let count = 0;
+    array.forEach((element) => {
+        if (!element) {
+            count++;
+        }
+    });
 
-        const array = [firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments];
-        let count = 0;
+ 
+    if (count > 0) {
+
+        return res.render('alert', { title: 'Thank You', firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments, count});
+
+    } else {
         
-        console.log(firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments )
-        
-        array.forEach((element) => {
-            if (element === "" || element === null) {
-                count++;
+        res.render('thankyou', { title: 'Thank You', firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments}); // Pass firstname
+        db.run(sql, [firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments], function (err) {
+            if (err) {
+                return res.status(400).json({ error: err.message });
             }
         });
-
-        // if (!firstname || !surename || !mobileNumber || !email || !inputNumCaps || !capstyles  || !comments  ) {
-        if (count > 0) {
-            return res.render('alert', { title: 'Thank You', firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments, count});
-        } else {
-            return res.render('thankyou', { title: 'Thank You', firstname, surename, mobileNumber, email, inputNumCaps, capstyles, comments}); // Pass firstname
-        }
-
-    });
-    
+    }
 });
 
 //--------------------------------------------------------------------------------------------------
