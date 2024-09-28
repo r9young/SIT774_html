@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');  // Import cors
 const path = require('path');
 const app = express();
-const port = 4000;
+const port = 4050;
 
 app.use(cors());
 app.use(express.json());
@@ -20,9 +20,9 @@ app.get('/', function(req, res) {
 });
 
 // Route to serve the script.js file
-// app.get('/script.js', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'views', 'script.js'));
-// });
+app.get('/script.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'script.js'));
+});
 
 
 // Connect to SQLite database && create a new database if it doesn't exist
@@ -103,27 +103,38 @@ const getData = (res) => {
     });
 };
 
-app.listen(4000);
-console.log('Server is listening on port 4000');
 
 
 // Function to search the database
 
-app.post('/search', (req, res) => {
-    searchData(req, res);
+app.get('/search', (req, res) => {
+    const searchInput = req.query.searchInput; // get the search input from the query string
+    const searchOption = req.query.searchOption; // get the search field (e.g., firstname, surname) from the query string
+
+    // Ensure that only certain fields are allowed to be searched to avoid SQL injection
+    const allowedFields = ['firstname', 'surname', 'mobile', 'email'];
+    if (!allowedFields.includes(searchOption)) {
+        return res.status(400).send('Invalid search option.');
+    }
+
+    // SQL statement to search the database
+    const sql = `SELECT * FROM users WHERE ${searchOption} LIKE ?`;
+    const searchValue = `%${searchInput}%`;
+
+    db.all(sql, [searchValue], (err, rows) => {
+        if (err) {
+            res.status(500).send('An error occurred: ' + err.message);
+        } else {
+            res.render('submit', { title: 'Search Results', rows: rows });
+        }
+    });
 });
 
-const searchData = (req, res) => {
-    const { searchInput, searchOption } = req.body; 
-    // attempting to extract the searchInput and searchOption values from the body of the request that is being sent from your website
-    console.log(searchInput, searchOption);
-    res.render('search', { title: 'Thank You', searchInput, searchOption });
-    // search is the name of the template file you want to render.
 
 
-    const sql = "SELECT * FROM users WHERE {searchInput} LIKE '{searchOption}%' VALUES (?,?)"; 
+app.listen(4050);
+console.log('Server is listening on port 4050');
 
-}
 
 
 
